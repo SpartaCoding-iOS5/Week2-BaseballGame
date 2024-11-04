@@ -19,13 +19,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E20589152CD859F10049F4B7 /* Week2-BaseballGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Week2-BaseballGame"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E20589152CD859F10049F4B7 /* NumberBaseball */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NumberBaseball; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		E20589172CD859F10049F4B7 /* Week2-BaseballGame */ = {
+		E20589172CD859F10049F4B7 /* NumberBaseball */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Week2-BaseballGame";
+			path = NumberBaseball;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -44,7 +44,7 @@
 		E205890C2CD859F10049F4B7 = {
 			isa = PBXGroup;
 			children = (
-				E20589172CD859F10049F4B7 /* Week2-BaseballGame */,
+				E20589172CD859F10049F4B7 /* NumberBaseball */,
 				E20589162CD859F10049F4B7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,7 +52,7 @@
 		E20589162CD859F10049F4B7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E20589152CD859F10049F4B7 /* Week2-BaseballGame */,
+				E20589152CD859F10049F4B7 /* NumberBaseball */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,9 +60,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E20589142CD859F10049F4B7 /* Week2-BaseballGame */ = {
+		E20589142CD859F10049F4B7 /* NumberBaseball */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E205891C2CD859F10049F4B7 /* Build configuration list for PBXNativeTarget "Week2-BaseballGame" */;
+			buildConfigurationList = E205891C2CD859F10049F4B7 /* Build configuration list for PBXNativeTarget "NumberBaseball" */;
 			buildPhases = (
 				E20589112CD859F10049F4B7 /* Sources */,
 				E20589122CD859F10049F4B7 /* Frameworks */,
@@ -73,13 +73,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				E20589172CD859F10049F4B7 /* Week2-BaseballGame */,
+				E20589172CD859F10049F4B7 /* NumberBaseball */,
 			);
-			name = "Week2-BaseballGame";
+			name = NumberBaseball;
 			packageProductDependencies = (
 			);
 			productName = "Week2-BaseballGame";
-			productReference = E20589152CD859F10049F4B7 /* Week2-BaseballGame */;
+			productReference = E20589152CD859F10049F4B7 /* NumberBaseball */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -97,7 +97,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E20589102CD859F10049F4B7 /* Build configuration list for PBXProject "Week2-BaseballGame" */;
+			buildConfigurationList = E20589102CD859F10049F4B7 /* Build configuration list for PBXProject "NumberBaseball" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -111,7 +111,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E20589142CD859F10049F4B7 /* Week2-BaseballGame */,
+				E20589142CD859F10049F4B7 /* NumberBaseball */,
 			);
 		};
 /* End PBXProject section */
@@ -266,7 +266,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E20589102CD859F10049F4B7 /* Build configuration list for PBXProject "Week2-BaseballGame" */ = {
+		E20589102CD859F10049F4B7 /* Build configuration list for PBXProject "NumberBaseball" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E205891A2CD859F10049F4B7 /* Debug */,
@@ -275,7 +275,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E205891C2CD859F10049F4B7 /* Build configuration list for PBXNativeTarget "Week2-BaseballGame" */ = {
+		E205891C2CD859F10049F4B7 /* Build configuration list for PBXNativeTarget "NumberBaseball" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E205891D2CD859F10049F4B7 /* Debug */,
