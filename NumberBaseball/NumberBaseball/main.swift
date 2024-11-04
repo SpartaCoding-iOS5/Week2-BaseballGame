@@ -5,26 +5,33 @@
 //  Created by DoyleHWorks on 11/4/24.
 //
 
+
 import Foundation
 
 let answersList = Answers().array // Declare answers list
 let validAnswers = Set(answersList) // Declare valid answers
-let solution = AnswerGenerator().random(answersList) // Generate an answer
-let invalidPitchMessage = "Aw dawg, your pitch was whack! Try 'help' for help." // Message for invalid inputs
 
 while true {
-    print("Throw a 3-digit pitch! : ", terminator: "")
+    print(Messages().welcome, terminator: "")
     guard let userInput = readLine() else { continue }
     
-    if userInput == "help" {
-        print(Help().rules)
+    switch userInput {
+    case "1": // 1. Start the game
+        print(Messages().gameStarts, terminator: "")
+        for i in 0...2 { print("\(3 - i)...") ; sleep(1) }
+        print("")
+        NumberBaseball().play()
+    case "2" : //2. Check the game stats - not available
+        print(Messages().gameStats)
+        sleep(1)
+        continue
+    case "3": //3. Exit
+        print(Messages().exitProgram)
+        sleep(1)
+        exit(0)
+    default:
+        print(Messages().invalidInput)
+        sleep(1)
         continue
     }
-    
-    guard let pitch = Int(userInput), validAnswers.contains(pitch) else {
-        print(invalidPitchMessage)
-        continue
-    }
-    
-    StrikeAndBall.judge(solution, pitch)
 }

@@ -41,7 +41,7 @@ class StrikeAndBall {
         }
         
         if strikeCount == 3 {
-            print("Congratulations! Your pitch was spot on!")
+            print(Messages().congrats)
         } else {
             print("Strikes: \(strikeCount), Balls: \(ballCount)")
         }
