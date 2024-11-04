@@ -7,20 +7,24 @@
 
 import Foundation
 
-// Declare answers list and valid answers
-let answersList = Answers().array
-let validAnswers = Set(answersList)
+let answersList = Answers().array // Declare answers list
+let validAnswers = Set(answersList) // Declare valid answers
+let solution = AnswerGenerator().random(answersList) // Generate an answer
+let invalidPitchMessage = "Aw dawg, your pitch was whack! Try 'help' for help." // Message for invalid inputs
 
-// Generate an answer
-let answer = AnswerGenerator().random(answersList)
-
-print("""
-answersList:
-\(answersList)
-
-validAnswers:
-\(validAnswers)
-
-answer:
-\(answer)
-""")
+while true {
+    print("Throw a 3-digit pitch! : ", terminator: "")
+    guard let userInput = readLine() else { continue }
+    
+    if userInput == "help" {
+        print(Help().rules)
+        continue
+    }
+    
+    guard let pitch = Int(userInput), validAnswers.contains(pitch) else {
+        print(invalidPitchMessage)
+        continue
+    }
+    
+    StrikeAndBall.judge(solution, pitch)
+}

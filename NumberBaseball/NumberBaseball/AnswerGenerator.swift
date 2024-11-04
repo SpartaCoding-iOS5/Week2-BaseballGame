@@ -6,12 +6,12 @@
 //
 
 class AnswerGenerator {
-    func random(_ answersList: Array<String>) -> String {
+    func random(_ answersList: Array<Int>) -> Int {
         if let answer = answersList.randomElement() {
             return answer
         } else {
             print("Error: Invalid Answers List")
-            return ""
+            return -1
         }
     }
 }
