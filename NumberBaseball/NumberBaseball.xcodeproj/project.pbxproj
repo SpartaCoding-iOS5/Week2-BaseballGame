@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXCopyFilesBuildPhase section */
-		71C23DB72CD8B84300A5F8FF /* CopyFiles */ = {
+		71C23DB72CD8B84300A5F8FF /* Copy Files (1 item) */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			dstPath = /usr/share/man/man1;
 			dstSubfolderSpec = 0;
 			files = (
 			);
+			name = "Copy Files (1 item)";
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -26,6 +27,11 @@
 		71C23DBB2CD8B84300A5F8FF /* NumberBaseball */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = NumberBaseball;
+			sourceTree = "<group>";
+		};
+		71C23DE52CD8DB9200A5F8FF /* Archive */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Archive;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -44,6 +50,7 @@
 		71C23DB02CD8B84300A5F8FF = {
 			isa = PBXGroup;
 			children = (
+				71C23DE52CD8DB9200A5F8FF /* Archive */,
 				71C23DBB2CD8B84300A5F8FF /* NumberBaseball */,
 				71C23DBA2CD8B84300A5F8FF /* Products */,
 			);
@@ -66,7 +73,7 @@
 			buildPhases = (
 				71C23DB52CD8B84300A5F8FF /* Sources */,
 				71C23DB62CD8B84300A5F8FF /* Frameworks */,
-				71C23DB72CD8B84300A5F8FF /* CopyFiles */,
+				71C23DB72CD8B84300A5F8FF /* Copy Files (1 item) */,
 			);
 			buildRules = (
 			);
@@ -74,6 +81,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				71C23DBB2CD8B84300A5F8FF /* NumberBaseball */,
+				71C23DE52CD8DB9200A5F8FF /* Archive */,
 			);
 			name = NumberBaseball;
 			packageProductDependencies = (
