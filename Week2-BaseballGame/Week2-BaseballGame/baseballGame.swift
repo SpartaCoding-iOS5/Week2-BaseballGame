@@ -7,21 +7,21 @@
 
 class BaseballGame {
     
-    enum GameMessage: String {
-        case gemeStartMessage = "Game Start",
-             requireInputMessage = "Please enter the numbers for each question mark in order, then press Enter.",
-             gameEndMessage = "Game End",
-             strikeMessage = "Strike",
-             ballMessage = "Ball",
-             outMessage = "Out!",
-             hitMessage = "Hit!"
+    private enum GameMessage {
+        static let gemeStartMessage = "Game Start"
+        static let requireInputMessage = "Please enter the numbers for each question mark in order, then press Enter."
+        static let gameEndMessage = "Game End"
+        static let strikeMessage = "Strike"
+        static let ballMessage = "Ball"
+        static let outMessage = "Out!"
+        static let hitMessage = "Hit!"
         
-        static func printGuidanceMessage(message: GameMessage) {
-            print(message.rawValue)
+        static func printGuidanceMessage(message: String) {
+            print(message)
         }
     }
     
-    enum InputError: Error {
+    private enum InputError: Error {
         case inputCountError,
              invalidInputError,
              zeroInputError,
@@ -49,7 +49,7 @@ class BaseballGame {
         }
     }
     
-    enum GameStatus: Int {
+    private enum GameStatus: Int {
         case on = 1,
              off = 0
     }
@@ -74,14 +74,14 @@ class BaseballGame {
             }
         }
         
-        GameMessage.printGuidanceMessage(message: .gemeStartMessage)
+        GameMessage.printGuidanceMessage(message: GameMessage.gemeStartMessage)
         print(questionBoxes)
     
         print(answer) //test
     }
     
-    func getPlayerInput() -> String {
-        GameMessage.printGuidanceMessage(message: .requireInputMessage)
+    private func getPlayerInput() -> String {
+        GameMessage.printGuidanceMessage(message: GameMessage.requireInputMessage)
         var tempInput = readLine()!
         tempInput.replace(" " , with: "")
         return tempInput
@@ -126,12 +126,12 @@ class BaseballGame {
 //                print("strikeCount : \(strikeCount), ballCount : \(ballCount), outCount : \(outCount)") // test
 
                 if strikeCount == playerInput.count {
-                    GameMessage.printGuidanceMessage(message: .hitMessage)
+                    GameMessage.printGuidanceMessage(message: GameMessage.hitMessage)
                     gameStatus = .off
                 } else if outCount == playerInput.count {
-                    GameMessage.printGuidanceMessage(message: .outMessage)
+                    GameMessage.printGuidanceMessage(message: GameMessage.outMessage)
                 } else {
-                    print("\(strikeCount) \(GameMessage.strikeMessage.rawValue) \(ballCount) \(GameMessage.ballMessage.rawValue)")
+                    print("\(strikeCount) \(GameMessage.strikeMessage) \(ballCount) \(GameMessage.ballMessage)")
        
                 }
       
