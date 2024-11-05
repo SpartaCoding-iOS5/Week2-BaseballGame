@@ -13,7 +13,7 @@ class BaseballGame: Baseball {
     var result: String = ""
     var rightAnswer: Bool = false
         
-    func compareNumber(_ currentNumber: [Int], _ input: Int) {
+    func compareNumber(_ currentNumber: [Int], _ input: Int)throws {
         var number = input
         var numberArray = [Int]()
         
@@ -23,9 +23,7 @@ class BaseballGame: Baseball {
         while number > 0 {
             // 조건 1. 중복값이 있을 경우 오류
             guard !numberArray.contains(number % 10) else {
-                result = "올바르지 않은 입력값입니다.\n"
-                print(result)
-                return
+                throw BaseballGameError.duplicateValue
             }
             numberArray.insert(number % 10, at: 0)
             number /= 10
@@ -33,9 +31,7 @@ class BaseballGame: Baseball {
         
         // 조건 2. 정답값와 입력값의 수가 같지 않으면 오류
         guard numberArray.count == currentNumber.count else {
-            result = "올바르지 않은 입력값입니다.\n"
-            print(result)
-            return
+            throw BaseballGameError.InputError
         }
         
         // 조건 3. 입력값에 0이 있을 경우 오류
@@ -48,9 +44,7 @@ class BaseballGame: Baseball {
         
         // 조건 4. 입력의 첫번째 값으로 0이 오면 오류
         guard numberArray.first != 0 else {
-            result = "올바르지 않은 입력값입니다.\n"
-            print(result)
-            return
+            throw BaseballGameError.enterValueOfZero
         }
         
         // 정답값과 입력값 비교(볼, 스트라이크 판정)
