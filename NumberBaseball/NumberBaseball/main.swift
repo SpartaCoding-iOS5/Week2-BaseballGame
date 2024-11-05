@@ -29,7 +29,7 @@ while true {
         sleep(1)
         gameStats.show()
         continue
-    case "3": //3. help
+    case "3": //3. How to play
         sleep(1)
         let help = Help()
         help.showLoop()
