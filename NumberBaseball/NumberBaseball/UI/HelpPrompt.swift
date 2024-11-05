@@ -1,5 +1,5 @@
 //
-//  Help.swift
+//  HelpPrompt.swift
 //  NumberBaseball
 //
 //  Created by DoyleHWorks on 11/5/24.
@@ -8,8 +8,10 @@
 import Foundation
 
 // Show help message
-struct Help {
-    let message = """
+struct HelpPrompt {
+    
+    private func message() {
+        print("""
         
         < How to Play >
         Enter a 3-digit number to throw a pitch.
@@ -24,12 +26,14 @@ struct Help {
         < How to Reset >
         You can type 'quit' to reset the current game.
 
-        """
+        """)
+        print("Press Enter to continue...", terminator:"")
+    }
     
     func showLoop() {
+        sleep(1)
         while true {
-            print(self.message)
-            print("Press Enter to continue...", terminator:"")
+            message()
             guard let _ = readLine() else { continue }
             sleep(1)
             return

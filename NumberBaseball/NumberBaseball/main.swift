@@ -7,38 +7,31 @@
 
 import Foundation
 
-let pitchesList = ValidPitches().array // Declare a valid pitches list
-let validAnswers = Set(pitchesList) // Declare valid answers
+let validPitches = ValidPitches().array // Declare a valid pitches list
+let validAnswers = Set(validPitches) // Declare valid answers
 
-var gameStats = GameStats() // Make an instance of GameStats
-var records = gameStats.records // Declare a game records list
-var currentGameNumber = gameStats.currentGameNumber // Declare a game counter
+let statManager = StatManager() // Make an instance of StatManager
 
 while true {
-    print(Messages().welcome, terminator: "")
+    print(MainMessages().welcome, terminator: "")
     guard let userInput = readLine()?.uppercased() else { continue }
     
     switch userInput {
     case "1": // 1. Start the game
-        print(Messages().gameStarts, terminator: "")
+        print(MainMessages().gameStarts, terminator: "")
         for i in 0...2 { print("\(3 - i)...") ; sleep(1) }
         print("")
-        NumberBaseball().play()
+        NumberBaseball().play(statManager)
     case "2" : // 2. Check the game stats
         sleep(1)
-        gameStats.show()
+        statManager.show()
         continue
     case "3": // 3. How to play
-        sleep(1)
-        let help = Help()
-        help.showLoop()
+        HelpPrompt().showLoop()
     case "4": // 4. Exit
-        sleep(1)
-        let recordsInstance = gameStats.records
-        let exitProgram = ExitProgram()
-        exitProgram.askLoop(recordsInstance.count)
+        ExitPrompt().askLoop(statManager.records.count)
     default:
-        print(Messages().invalidInput)
+        print(MainMessages().invalidInput)
         sleep(2)
         continue
     }

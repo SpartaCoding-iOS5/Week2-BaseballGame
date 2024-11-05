@@ -7,23 +7,21 @@
 
 // Take user inputs and send them to judge
 class NumberBaseball {
-    let perfectPitch = PerfectPitchGenerator().random(pitchesList) // Generate an answer
+    let perfectPitch = PerfectPitchGenerator().random(validPitches) // Generate an answer
     var pitches = 1 // Declare a pitch counter
     var shouldExitGameLoop = false // correct answer turns this to true
     
-    func play() {
+    func play(_ statManager: StatManager) {
         while !self.shouldExitGameLoop {
             print("Throw a pitch! : ", terminator: "")
             
             guard let userInput = readLine() else { continue }
             
             if userInput == "help" { // Shows help message
-                let help = Help()
-                help.showLoop()
+                HelpPrompt().showLoop()
                 continue
             } else if userInput == "quit" { // Shows a prompt to quit current game
-                let quitGame = QuitGame()
-                shouldExitGameLoop = quitGame.askLoop()
+                shouldExitGameLoop = QuitPrompt().askLoop()
                 continue
             }
             
@@ -36,7 +34,7 @@ class NumberBaseball {
             }
             
             let strikeAndBall = StrikeAndBall()
-            pitches = strikeAndBall.judge(perfectPitch, pitch, pitches) // returns -1 when correct, otherwise print hints
+            pitches = strikeAndBall.judge(statManager, perfectPitch, pitches, pitch) // returns -1 when correct, otherwise print hints
             shouldExitGameLoop = pitches == -1 // Exits loop when the pitch was correct.
         }
     }

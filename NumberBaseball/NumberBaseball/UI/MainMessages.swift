@@ -6,7 +6,7 @@
 //
 
 // Send messages to main loop
-struct Messages {
+struct MainMessages {
     
     let welcome = """
     

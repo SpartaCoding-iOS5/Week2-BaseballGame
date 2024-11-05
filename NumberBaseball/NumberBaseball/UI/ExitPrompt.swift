@@ -8,18 +8,26 @@
 import Foundation
 
 // Ask if user really wants to exit
-struct ExitProgram {
-    let messageY = """
+struct ExitPrompt {
     
-    Okay, see ya soon dawg.
-    """
-
-    let messageN = """
+    private func messageY() {
+        print("""
+        
+        Okay, see ya dawg.
+        """)
+        sleep(1)
+    }
     
-    I gotcha homie, let's get back.
-    """
+    private func messageN() {
+        print("""
+        
+        I gotcha homie, let's get back.
+        """)
+        sleep(1)
+    }
     
     func askLoop(_ recordsCount: Int) {
+        sleep(1)
         while true {
             print("You sure you wanna exit? Your records (\(recordsCount)) will be gone ( Y / N ) : ", terminator: "")
             
@@ -27,11 +35,10 @@ struct ExitProgram {
             
             switch userInput {
             case "Y":
-                print(self.messageY)
-                sleep(1)
+                messageY()
                 exit(0)
             case "N":
-                print(self.messageN)
+                messageN()
                 sleep(1)
                 return
             default:

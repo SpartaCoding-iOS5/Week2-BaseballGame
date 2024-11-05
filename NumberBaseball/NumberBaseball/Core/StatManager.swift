@@ -1,5 +1,5 @@
 //
-//  GameStats.swift
+//  StatManager.swift
 //  NumberBaseball
 //
 //  Created by DoyleHWorks on 11/5/24.
@@ -8,7 +8,7 @@
 import Foundation
 
 // Record game records and show them when called
-class GameStats {
+class StatManager {
     var records: [[Int]] = []
     var currentGameNumber: Int = 1
     

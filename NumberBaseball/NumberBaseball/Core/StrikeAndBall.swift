@@ -9,7 +9,7 @@ import Foundation
 
 // Judge user inputs and give hints or declare a win
 struct StrikeAndBall {
-    func pitchesString(_ pitches: Int) -> String {
+    private func pitchesString(_ pitches: Int) -> String {
         switch pitches {
         case 1:
             return "\(pitches)st"
@@ -22,7 +22,7 @@ struct StrikeAndBall {
         }
     }
     
-    func digits(_ number: Int) -> [Int] {
+    private func digits(_ number: Int) -> [Int] {
         var number = number
         var digits = [Int]()
         
@@ -34,7 +34,17 @@ struct StrikeAndBall {
         return digits
     }
     
-    func judge(_ perfectPitch: Int, _ pitch: Int, _ pitches: Int) -> Int {
+    private func correctPitch(_ statManager: StatManager, _ pitches: Int) {
+        statManager.record(pitches)
+        statManager.incrementGameNumber()
+        print("""
+        
+        Ayy, congrats! You nailed that \(self.pitchesString(pitches)) pitch perfectly!
+        """)
+        sleep(3)
+    }
+    
+    func judge(_ statManager: StatManager, _ perfectPitch: Int, _ pitches: Int, _ pitch: Int) -> Int {
         let pitches = pitches
         
         var strikeCount = 0
@@ -58,13 +68,7 @@ struct StrikeAndBall {
         }
         
         if strikeCount == 3 {
-            gameStats.record(pitches)
-            gameStats.incrementGameNumber()
-            print("""
-            
-            Ayy, congrats! You nailed that \(self.pitchesString(pitches)) pitch perfectly!
-            """)
-            sleep(3)
+            correctPitch(statManager, pitches)
             return -1
         } else {
             print("[\(self.pitchesString(pitches)) Pitch] Strikes: \(strikeCount), Balls: \(ballCount)")
