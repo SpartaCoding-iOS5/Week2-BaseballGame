@@ -1,5 +1,5 @@
 //
-//  Quit.swift
+//  ExitWarning.swift
 //  NumberBaseball
 //
 //  Created by DoyleHWorks on 11/5/24.
@@ -7,20 +7,20 @@
 
 import Foundation
 
-class QuitGame {
+struct ExitProgram {
     let messageY = """
     
-    Aight, see ya next game.
+    Okay, see ya soon dawg.
     """
 
     let messageN = """
     
-    Gotcha homie, gettin back into game.
+    I gotcha homie, let's get back.
     """
     
-    func askLoop() -> Bool{
+    func askLoop(_ recordsCount: Int) {
         while true {
-            print("You sure you wanna quit? ( Y / N ) : ", terminator: "")
+            print("You sure you wanna exit? Your records (\(recordsCount)) will be gone ( Y / N ) : ", terminator: "")
             
             guard let userInput = readLine()?.uppercased() else { continue }
             
@@ -28,14 +28,15 @@ class QuitGame {
             case "Y":
                 print(self.messageY)
                 sleep(1)
-                return true
+                exit(0)
             case "N":
                 print(self.messageN)
                 sleep(1)
-                return false
+                return
             default:
                 print("You aight? Enter 'Y' or 'N'.")
             }
         }
+        
     }
 }

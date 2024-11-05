@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Help {
+struct Help {
     let message = """
         
         < How to Play >

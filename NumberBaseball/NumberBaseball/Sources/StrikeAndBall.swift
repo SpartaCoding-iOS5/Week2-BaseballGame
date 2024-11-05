@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StrikeAndBall {
+struct StrikeAndBall {
     func pitchesString(_ pitches: Int) -> String {
         switch pitches {
         case 1:
