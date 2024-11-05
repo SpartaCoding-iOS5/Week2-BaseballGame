@@ -12,9 +12,7 @@ class BaseballGame: Baseball {
     var currentNumber: [Int]?
     var result: String = ""
     var rightAnswer: Bool = false
-    
-    static let baseballGame = BaseballGame()
-    
+        
     func compareNumber(_ currentNumber: [Int], _ input: Int) {
         var number = input
         var numberArray = [Int]()
@@ -55,7 +53,7 @@ class BaseballGame: Baseball {
         guard !(strike == currentNumber.count) else {
             result = "정답입니다!"
             print(result)
-            BaseballGame.baseballGame.rightAnswer = true
+            rightAnswer = true
             return
         }
         
