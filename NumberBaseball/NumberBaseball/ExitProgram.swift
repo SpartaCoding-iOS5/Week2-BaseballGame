@@ -19,9 +19,9 @@ class ExitProgram {
     I gotcha homie, let's get back.
     """
     
-    func askLoop() {
+    func askLoop(_ recordsCount: Int) {
         while true {
-            print("You sure you wanna exit? Your records (\(records.count)) will be gone ( Y / N ) : ", terminator: "")
+            print("You sure you wanna exit? Your records (\(recordsCount)) will be gone ( Y / N ) : ", terminator: "")
             
             guard let userInput = readLine()?.uppercased() else { continue }
             

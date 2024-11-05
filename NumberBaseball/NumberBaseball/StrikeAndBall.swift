@@ -57,6 +57,8 @@ class StrikeAndBall {
         }
         
         if strikeCount == 3 {
+            gameStats.record(pitches)
+            gameStats.incrementGameNumber()
             print("""
             
             Ayy, congrats! You nailed that \(self.pitchesString(pitches)) pitch perfectly!

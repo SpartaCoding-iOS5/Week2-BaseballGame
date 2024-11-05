@@ -8,10 +8,12 @@
 
 import Foundation
 
-let answersList = Answers().array // Declare answers list
+let answersList = Answers().array // Declare an answers list
 let validAnswers = Set(answersList) // Declare valid answers
 
-var records: [[Int]] = []
+var gameStats = GameStats() // Make an instance of GameStats
+var records = gameStats.records // Declare a game records list
+var currentGameNumber = gameStats.currentGameNumber // Declare a game counter
 
 while true {
     print(Messages().welcome, terminator: "")
@@ -23,9 +25,9 @@ while true {
         for i in 0...2 { print("\(3 - i)...") ; sleep(1) }
         print("")
         NumberBaseball().play()
-    case "2" : //2. Check the game stats - not available
-        print(Messages().gameStats)
+    case "2" : //2. Check the game stats
         sleep(1)
+        gameStats.show()
         continue
     case "3": //3. help
         sleep(1)
@@ -33,8 +35,9 @@ while true {
         help.showLoop()
     case "4": //4. Exit
         sleep(1)
+        let recordsInstance = gameStats.records
         let exitProgram = ExitProgram()
-        exitProgram.askLoop()
+        exitProgram.askLoop(recordsInstance.count)
     default:
         print(Messages().invalidInput)
         sleep(2)
