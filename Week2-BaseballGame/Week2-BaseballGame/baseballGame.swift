@@ -13,7 +13,7 @@ class BaseballGame {
              gameEndMessage = "Game End",
              strikeMessage = "Strike",
              ballMessage = "Ball",
-             outMessage = "Out"
+             outMessage = "Out!"
         
         static func printGuidanceMessage(message: GameMessage) {
             print(message.rawValue)
@@ -100,12 +100,19 @@ class BaseballGame {
             
             var strikeCount = 0
             var ballCount = 0
+            var outCount = 0
             for index in playerInput.startIndex...playerInput.count - 1 {
                 answer[index] == playerInput[index]! ? strikeCount += 1 : nil
                 answer.contains(playerInput[index]!) && answer[index] != playerInput[index]! ? ballCount += 1 : nil
+                !answer.contains(playerInput[index]!) ? outCount += 1 : nil
+            }
+
+            if outCount == playerInput.count {
+                GameMessage.printGuidanceMessage(message: GameMessage.outMessage)
+            } else {
+                print("\(strikeCount) \(GameMessage.strikeMessage.rawValue) \(ballCount) \(GameMessage.ballMessage.rawValue)")
             }
             
-            print("\(strikeCount) \(GameMessage.strikeMessage.rawValue) \(ballCount) \(GameMessage.ballMessage.rawValue)")
             
             
         } catch InputError.inputCountError {
