@@ -123,7 +123,7 @@ class BaseballGame {
                     !answer.contains(playerInputAsArray[index]!) ? outCount += 1 : nil
                 }
                 
-                print("strikeCount : \(strikeCount), ballCount : \(ballCount), outCount : \(outCount)")
+//                print("strikeCount : \(strikeCount), ballCount : \(ballCount), outCount : \(outCount)") // test
 
                 if strikeCount == playerInput.count {
                     GameMessage.printGuidanceMessage(message: .hitMessage)
