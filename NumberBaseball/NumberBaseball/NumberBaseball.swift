@@ -20,8 +20,8 @@ class NumberBaseball {
                 help.showLoop()
                 continue
             } else if userInput == "quit" {
-                let quit = Quit()
-                shouldExitGameLoop = quit.askLoop()
+                let quitGame = QuitGame()
+                shouldExitGameLoop = quitGame.askLoop()
                 continue
             }
             
