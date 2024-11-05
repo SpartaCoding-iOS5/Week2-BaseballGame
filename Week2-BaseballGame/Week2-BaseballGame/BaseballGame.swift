@@ -1,5 +1,5 @@
 //
-//  baseballGame.swift
+//  BaseballGame.swift
 //  Week2-BaseballGame
 //
 //  Created by CHYUN on 11/5/24.
