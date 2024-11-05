@@ -2,20 +2,26 @@
 //  NumberBaseball.swift
 //  NumberBaseball
 //
-//  Created by t0000-m0112 on 11/4/24.
+//  Created by DoyleHWorks on 11/4/24.
 //
 
 
 class NumberBaseball {
     let solution = AnswerGenerator().random(answersList) // Generate an answer
+    var shouldExitGameLoop = false
     
     func play() {
-        while true {
-            print("Throw a 3-digit pitch! : ", terminator: "")
+        while !self.shouldExitGameLoop {
+            print("Throw a pitch! : ", terminator: "")
             guard let userInput = readLine() else { continue }
             
             if userInput == "help" {
-                print(Messages().help)
+                let help = Help()
+                help.showLoop()
+                continue
+            } else if userInput == "quit" {
+                let quit = Quit()
+                shouldExitGameLoop = quit.askLoop()
                 continue
             }
             

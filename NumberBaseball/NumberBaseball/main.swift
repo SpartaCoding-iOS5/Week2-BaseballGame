@@ -11,9 +11,11 @@ import Foundation
 let answersList = Answers().array // Declare answers list
 let validAnswers = Set(answersList) // Declare valid answers
 
+var records = 0 // How many game records are
+
 while true {
     print(Messages().welcome, terminator: "")
-    guard let userInput = readLine() else { continue }
+    guard let userInput = readLine()?.uppercased() else { continue }
     
     switch userInput {
     case "1": // 1. Start the game
@@ -25,13 +27,17 @@ while true {
         print(Messages().gameStats)
         sleep(1)
         continue
-    case "3": //3. Exit
-        print(Messages().exitProgram)
+    case "3": //3. help
         sleep(1)
-        exit(0)
+        let help = Help()
+        help.showLoop()
+    case "4": //4. Exit
+        sleep(1)
+        let exitProgram = ExitProgram()
+        exitProgram.askLoop()
     default:
         print(Messages().invalidInput)
-        sleep(1)
+        sleep(2)
         continue
     }
 }
