@@ -4,7 +4,7 @@ import Foundation
 //let test = [5,7,6,0,0]
 //print(BaseballGame().isThereDuplicateValue(array: test))
 let baseballGame = BaseballGame()
-baseballGame.startNewSet()
-baseballGame.playGame()
+baseballGame.startGame()
+//baseballGame.playGame()
 
 

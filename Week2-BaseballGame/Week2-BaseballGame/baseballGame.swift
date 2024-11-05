@@ -7,10 +7,17 @@
 
 class BaseballGame {
     
+    private enum GameStatus: Int {
+        case on = 1,
+             off = 0
+    }
+    
     private enum GameMessage {
-        static let gemeStartMessage = "Game Start"
+        static let welcomeMessage = "Welcome! Please enter the number to execute. \n 1. Game Start 2. History 3. Exit"
+        static let gemeStartMessage = "*** Game Start ***"
         static let requireInputMessage = "Please enter the numbers for each question mark in order, then press Enter."
-        static let gameEndMessage = "Game End"
+        static let gameEndMessage = "***Game End***"
+        static let tryAgainMessage = "Try input again."
         static let strikeMessage = "Strike"
         static let ballMessage = "Ball"
         static let outMessage = "Out!"
@@ -49,39 +56,45 @@ class BaseballGame {
         }
     }
     
-    private enum GameStatus: Int {
-        case on = 1,
-             off = 0
-    }
-    
+
     private var answer: [Int] = []
     private let numberOfAnswer = 3
-    private let rangeOfAnswer = 0...9
-    private var gameStatus = GameStatus.off
-    
-
-    func startNewSet() {
-        
-        gameStatus = .on
-        
-        var questionBoxes = ""
-        
-        while answer.count < numberOfAnswer {
-            
-            let randomNumber = Int.random(in: rangeOfAnswer)
-            if !answer.contains(randomNumber) {
-                answer.append(randomNumber)
-                questionBoxes = questionBoxes + "[ ? ] "
-            }
-            if answer[0] == 0 {
-                answer.remove(at: 0)
+    private let rangeOfAnswerWithZero = 0...9
+    private let rangeOfAnswerWithoutZero = 1...9
+    private var gameStatus: GameStatus = .on {
+        willSet(newStatus) {
+            switch newStatus {
+            case .on : GameMessage.printGuidanceMessage(message: GameMessage.welcomeMessage)
+            case .off : GameMessage.printGuidanceMessage(message: GameMessage.gameEndMessage)
             }
         }
-        
-        GameMessage.printGuidanceMessage(message: GameMessage.gemeStartMessage)
-        print(questionBoxes)
+    }
     
-        print(answer) //test
+    func startGame() {
+        gameStatus = .on
+
+        commandLoop : while true {
+            let command = readLine()!.replacingOccurrences(of: " ", with: "")
+
+            switch command {
+            case "1":
+                playGame()
+                break commandLoop
+            case "2":
+                lookHistory()
+                break commandLoop
+            case "3":
+                gameStatus = .off
+                break commandLoop
+            default :
+                InputError.printErrorMessage(error: .invalidInputError)
+                GameMessage.printGuidanceMessage(message: GameMessage.tryAgainMessage)
+            }
+        }
+    }
+    
+    private func lookHistory() {
+        
     }
     
     private func getPlayerInput() -> String {
@@ -92,6 +105,29 @@ class BaseballGame {
     }
     
     func playGame() {
+        
+        var questionBoxes = ""
+        var range = rangeOfAnswerWithoutZero
+        
+        while answer.count < numberOfAnswer {
+            
+            let randomNumber = Int.random(in: range)
+            if !answer.contains(randomNumber) {
+                answer.append(randomNumber)
+                range = rangeOfAnswerWithZero // 랜덤 범위 - 0을 포함한 범위로 변경
+                questionBoxes = questionBoxes + "[ ? ] "
+            }
+
+//            if answer[0] == 0 {
+//                answer.remove(at: 0)
+//            }
+        }
+        
+        GameMessage.printGuidanceMessage(message: GameMessage.gemeStartMessage)
+        print(questionBoxes)
+    
+        print(answer) //test
+        
         
         /** 값 비교 전 체크 필요
          * [ 해결 가능 - 제일 먼저 체크 ]
@@ -113,7 +149,7 @@ class BaseballGame {
         var outCount = 0
 
         
-        gameLoop : while gameStatus == .on {
+        while gameStatus == .on {
     
             let playerInput = getPlayerInput()
             
@@ -136,8 +172,11 @@ class BaseballGame {
                     GameMessage.printGuidanceMessage(message: GameMessage.outMessage)
                 } else {
                     print("\(strikeCount) \(GameMessage.strikeMessage) \(ballCount) \(GameMessage.ballMessage)")
-       
                 }
+                
+                strikeCount = 0
+                ballCount = 0
+                outCount = 0
       
                 
             } catch InputError.inputCountError {
