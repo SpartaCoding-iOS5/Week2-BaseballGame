@@ -5,7 +5,6 @@
 //  Created by DoyleHWorks on 11/4/24.
 //
 
-
 import Foundation
 
 let answersList = Answers().array // Declare an answers list
@@ -25,15 +24,15 @@ while true {
         for i in 0...2 { print("\(3 - i)...") ; sleep(1) }
         print("")
         NumberBaseball().play()
-    case "2" : //2. Check the game stats
+    case "2" : // 2. Check the game stats
         sleep(1)
         gameStats.show()
         continue
-    case "3": //3. How to play
+    case "3": // 3. How to play
         sleep(1)
         let help = Help()
         help.showLoop()
-    case "4": //4. Exit
+    case "4": // 4. Exit
         sleep(1)
         let recordsInstance = gameStats.records
         let exitProgram = ExitProgram()

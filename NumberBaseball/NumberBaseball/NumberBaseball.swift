@@ -5,7 +5,6 @@
 //  Created by DoyleHWorks on 11/4/24.
 //
 
-
 class NumberBaseball {
     let solution = AnswerGenerator().random(answersList) // Generate an answer
     var pitches = 1
