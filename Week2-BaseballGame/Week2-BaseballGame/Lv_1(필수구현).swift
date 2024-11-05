@@ -38,7 +38,7 @@ func levelOne() {
         }
         
         // 판정 시작
-        let (strike, ball) = checkBall(userData: userAnswerArray, answerData: answerArray)
+        let (strike, ball) = evaluateBallCount(userData: userAnswerArray, answerData: answerArray)
         print("\(strike) 스트라이크, \(ball) 볼")
         
         // 정답 체크
@@ -60,15 +60,15 @@ func levelOne() {
     }
     
     // 비교판정 함수
-    func checkBall(userData: [Int], answerData: [Int]) -> (Int, Int) {
+    func evaluateBallCount(userData: [Int], answerData: [Int]) -> (Int, Int) {
         var strike = 0
         var ball = 0
         
-        for checkIndex in 0...2 {
-            if userData[checkIndex] == answerData[checkIndex] {
+        for index in userData.indices {
+            if userData[index] == answerData[index] {
                 strike += 1
             }
-            else if answerData.contains(userData[checkIndex]) {
+            else if answerData.contains(userData[index]) {
                 ball += 1
             }
         }
