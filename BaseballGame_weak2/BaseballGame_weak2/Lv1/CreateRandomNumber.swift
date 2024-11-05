@@ -21,7 +21,7 @@ func createRandomNumber() -> [Int] {
     var numberArray: [Int] = []
     while numberArray.count < 3 {
         let num: Int = Int.random(in: 1...9)
-        guard !numberArray.contains(num % 10) else {
+        guard !numberArray.contains(num) else {
             continue
         }
         numberArray.append(num)
