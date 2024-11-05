@@ -19,22 +19,25 @@ extension Baseball {
             print("환영합니다! 원하시는 번호를 입력해주세요")
             print(game.selected)
             
-            let input = readLine()
-            if let input, let intInput = Int(input) {
-                switch intInput {
-                case 1:
-                    print(MagicNumber.blank)
-                    game.play()
-                case 2:
-                    print("게임 기록을 불러옵니다.")
-                case 3:
-                    print("< 게임을 종료합니다 >")
-                    game.rightAnswer = true
-                default:
+            while game.rightAnswer == false {
+                let input = readLine()
+                if let input, let intInput = Int(input) {
+                    switch intInput {
+                    case 1:
+                        print(MagicNumber.blank)
+                        game.play()
+                    case 2:
+                        print("게임 기록을 불러옵니다.")
+                        game.rightAnswer = true
+                    case 3:
+                        print("< 게임을 종료합니다 >")
+                        game.rightAnswer = true
+                    default:
+                        print("올바르지 않은 입력값입니다.")
+                    }
+                } else {
                     print("올바르지 않은 입력값입니다.")
                 }
-            } else {
-                print("올바르지 않은 입력값입니다.")
             }
         }
     }
