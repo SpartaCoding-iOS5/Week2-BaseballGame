@@ -25,11 +25,6 @@ struct Messages {
     Ayy, bet! We about to dive in: 
     """
     
-    let gameStats = """
-    
-    Sorry dawg, game stats still cookin' up.
-    """
-    
     let invalidInput = """
     
     You trippin? Pick a number between 1 and 4.
