@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Record game records and show them when called
 class GameStats {
     var records: [[Int]] = []
     var currentGameNumber: Int = 1

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Ask if user really wants to exit
 struct ExitProgram {
     let messageY = """
     

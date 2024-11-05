@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Judge user inputs and give hints or declare a win
 struct StrikeAndBall {
     func pitchesString(_ pitches: Int) -> String {
         switch pitches {
@@ -33,24 +34,24 @@ struct StrikeAndBall {
         return digits
     }
     
-    func judge(_ solution: Int, _ pitch: Int, _ pitches: Int) -> Int {
+    func judge(_ perfectPitch: Int, _ pitch: Int, _ pitches: Int) -> Int {
         let pitches = pitches
         
         var strikeCount = 0
         var ballCount = 0
         
-        let solutionDigits = self.digits(solution)
+        let perfectPitchDigits = self.digits(perfectPitch)
         let pitchDigits = self.digits(pitch)
         
-        for i in 0..<solutionDigits.count {
-            if solutionDigits[i] == pitchDigits[i] {
+        for i in 0..<perfectPitchDigits.count {
+            if perfectPitchDigits[i] == pitchDigits[i] {
                 strikeCount += 1
             }
         }
         
-        for i in 0..<solutionDigits.count {
+        for i in 0..<perfectPitchDigits.count {
             for j in 0..<pitchDigits.count {
-                if i != j && solutionDigits[i] == pitchDigits[j] {
+                if i != j && perfectPitchDigits[i] == pitchDigits[j] {
                     ballCount += 1
                 }
             }

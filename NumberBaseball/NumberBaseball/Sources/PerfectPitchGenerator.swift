@@ -5,9 +5,10 @@
 //  Created by DoyleHWorks on 11/4/24.
 //
 
-struct AnswerGenerator {
-    func random(_ answersList: Array<Int>) -> Int {
-        if let answer = answersList.randomElement() {
+// Generate a random answer from answersList
+struct PerfectPitchGenerator {
+    func random(_ pitchesList: Array<Int>) -> Int {
+        if let answer = pitchesList.randomElement() {
             return answer
         } else {
             print("Error: Invalid Answers List")

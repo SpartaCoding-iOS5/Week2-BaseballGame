@@ -5,6 +5,7 @@
 //  Created by DoyleHWorks on 11/4/24.
 //
 
+// Send messages to main loop
 struct Messages {
     
     let welcome = """

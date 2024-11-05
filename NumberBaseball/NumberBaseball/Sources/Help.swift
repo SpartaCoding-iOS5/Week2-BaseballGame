@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Show help message
 struct Help {
     let message = """
         

@@ -7,8 +7,8 @@
 
 import Foundation
 
-let answersList = Answers().array // Declare an answers list
-let validAnswers = Set(answersList) // Declare valid answers
+let pitchesList = ValidPitches().array // Declare a valid pitches list
+let validAnswers = Set(pitchesList) // Declare valid answers
 
 var gameStats = GameStats() // Make an instance of GameStats
 var records = gameStats.records // Declare a game records list
