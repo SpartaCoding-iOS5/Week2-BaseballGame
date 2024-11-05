@@ -38,7 +38,7 @@ class BaseballGame {
             case invalidInputError:
                 message = "Invalid input."
             case zeroInputError:
-                message = "Zero is not allowed."
+                message = "The first position cannot contain a zero."
             case duplicateValueError:
                 message = "There are duplicate values."
             case unknownError:
@@ -56,7 +56,7 @@ class BaseballGame {
     
     private var answer: [Int] = []
     private let numberOfAnswer = 3
-    private let rangeOfAnswer = 1...9
+    private let rangeOfAnswer = 0...9
     private var gameStatus = GameStatus.off
     
 
@@ -67,10 +67,14 @@ class BaseballGame {
         var questionBoxes = ""
         
         while answer.count < numberOfAnswer {
+            
             let randomNumber = Int.random(in: rangeOfAnswer)
             if !answer.contains(randomNumber) {
                 answer.append(randomNumber)
                 questionBoxes = questionBoxes + "[ ? ] "
+            }
+            if answer[0] == 0 {
+                answer.remove(at: 0)
             }
         }
         
@@ -171,7 +175,7 @@ class BaseballGame {
             throw InputError.invalidInputError
         }
         
-        guard !inputAsIntArray.contains(0) else {
+        guard inputAsIntArray.first != 0 else {
             throw InputError.zeroInputError
         }
         
