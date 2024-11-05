@@ -8,6 +8,7 @@
 
 class NumberBaseball {
     let solution = AnswerGenerator().random(answersList) // Generate an answer
+    var pitches = 1
     var shouldExitGameLoop = false
     
     func play() {
@@ -30,8 +31,9 @@ class NumberBaseball {
                 continue
             }
             
-            StrikeAndBall.judge(solution, pitch)
+            let strikeAndBall = StrikeAndBall()
+            pitches = strikeAndBall.judge(solution, pitch, pitches)
+            shouldExitGameLoop = pitches == -1
         }
     }
-    
 }

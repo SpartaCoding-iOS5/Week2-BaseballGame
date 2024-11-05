@@ -5,9 +5,23 @@
 //  Created by DoyleHWorks on 11/4/24.
 //
 
+import Foundation
 
 class StrikeAndBall {
-    private static func digits(_ number: Int) -> [Int] {
+    func pitchesString(_ pitches: Int) -> String {
+        switch pitches {
+        case 1:
+            return "\(pitches)st"
+        case 2:
+            return "\(pitches)nd"
+        case 3:
+            return "\(pitches)rd"
+        default:
+            return "\(pitches)th"
+        }
+    }
+    
+    func digits(_ number: Int) -> [Int] {
         var number = number
         var digits = [Int]()
         
@@ -19,7 +33,9 @@ class StrikeAndBall {
         return digits
     }
     
-    static func judge(_ solution: Int, _ pitch: Int) {
+    func judge(_ solution: Int, _ pitch: Int, _ pitches: Int) -> Int {
+        let pitches = pitches
+        
         var strikeCount = 0
         var ballCount = 0
         
@@ -41,9 +57,15 @@ class StrikeAndBall {
         }
         
         if strikeCount == 3 {
-            print(Messages().congrats)
+            print("""
+            
+            Ayy, congrats! You nailed that \(self.pitchesString(pitches)) pitch perfectly!
+            """)
+            sleep(3)
+            return -1
         } else {
-            print("Strikes: \(strikeCount), Balls: \(ballCount)")
+            print("[\(self.pitchesString(pitches)) Pitch] Strikes: \(strikeCount), Balls: \(ballCount)")
+            return pitches + 1
         }
     }
 }

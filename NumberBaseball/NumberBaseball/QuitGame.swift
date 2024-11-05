@@ -5,6 +5,7 @@
 //  Created by DoyleHWorks on 11/5/24.
 //
 
+
 import Foundation
 
 class QuitGame {
@@ -12,7 +13,7 @@ class QuitGame {
     
     Aight, see ya next game.
     """
-    
+
     let messageN = """
     
     Gotcha homie, gettin back into game.
@@ -37,6 +38,5 @@ class QuitGame {
                 print("You aight? Enter 'Y' or 'N'.")
             }
         }
-        
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 let answersList = Answers().array // Declare answers list
 let validAnswers = Set(answersList) // Declare valid answers
 
-var records = 0 // How many game records are
+var records: [[Int]] = []
 
 while true {
     print(Messages().welcome, terminator: "")

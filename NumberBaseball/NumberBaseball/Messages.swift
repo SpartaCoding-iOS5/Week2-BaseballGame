@@ -35,8 +35,9 @@ struct Messages {
     You trippin? Pick a number between 1 and 4.
     """
     
-    let invalidPitch = "Aw dawg, your pitch was whack! Try 'help' for help."
+    let invalidPitch = """
     
-    let congrats =  "Ayy, congrats! You nailed that pitch perfectly!"
+    Aw dawg, your pitch was whack! Try 'help' for help.
+    """
     
 }
