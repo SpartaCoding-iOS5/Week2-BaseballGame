@@ -12,7 +12,11 @@ class BaseballGame: BaseballGameLogic  {
     var currentNumber: [Int]?
     var result: String = ""
     var rightAnswer: Bool = false
-        
+    
+    /// 숫자 야구게임의 정답과 입력값 비교
+    /// - Parameters:
+    ///   - currentNumber: 정답
+    ///   - input: 사용자 숫자 입력
     func compareNumber(_ currentNumber: [Int], _ input: Int)throws {
         var number = input
         var numberArray = [Int]()

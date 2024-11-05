@@ -13,6 +13,10 @@ import Foundation
  1. 중복된 값이 있으면 안됨
  2. 처음 값이 0이면 안됨
  */
+
+
+/// 랜덤한 임의의 수 3개 생성하기(0 ~ 9)
+/// - Returns: 생성된 임의의 수 배열
 func createRandomNumberLv3() -> [Int] {
     var numberArray: [Int] = []
     while numberArray.count < 3 {

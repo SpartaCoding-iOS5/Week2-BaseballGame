@@ -8,6 +8,8 @@
 import Foundation
 
 extension BaseballGameLogic  {
+    
+    /// 숫자 야구게임을 진행한다 - 에러 캐치
     public mutating func tryGame() {
         if let game = self as? BaseballGame {
             game.currentNumber = createRandomNumberLv3()
