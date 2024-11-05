@@ -13,7 +13,8 @@ class BaseballGame {
              gameEndMessage = "Game End",
              strikeMessage = "Strike",
              ballMessage = "Ball",
-             outMessage = "Out!"
+             outMessage = "Out!",
+             hitMessage = "Hit!"
         
         static func printGuidanceMessage(message: GameMessage) {
             print(message.rawValue)
@@ -48,13 +49,20 @@ class BaseballGame {
         }
     }
     
+    enum GameStatus: Int {
+        case on = 1,
+             off = 0
+    }
+    
     private var answer: [Int] = []
     private let numberOfAnswer = 3
-    private var playerInput: [Int?] = []
     private let rangeOfAnswer = 1...9
+    private var gameStatus = GameStatus.off
     
 
     func startNewSet() {
+        
+        gameStatus = .on
         
         var questionBoxes = ""
         
@@ -72,9 +80,14 @@ class BaseballGame {
         print(answer) //test
     }
     
-    func getPlayerInput() {
-        
+    func getPlayerInput() -> String {
         GameMessage.printGuidanceMessage(message: .requireInputMessage)
+        var tempInput = readLine()!
+        tempInput.replace(" " , with: "")
+        return tempInput
+    }
+    
+    func playGame() {
         
         /** 값 비교 전 체크 필요
          * [ 해결 가능 - 제일 먼저 체크 ]
@@ -91,48 +104,58 @@ class BaseballGame {
          * -------------> 다시 입력 받기
          **/
         
-        var tempInput = readLine()!
-        tempInput.replace(" " , with: "")
-        
-        do {
-            // 이상 없이 정상 진행될 경우
-            playerInput = try checkError(playerInput: tempInput)
-            
-            var strikeCount = 0
-            var ballCount = 0
-            var outCount = 0
-            for index in playerInput.startIndex...playerInput.count - 1 {
-                answer[index] == playerInput[index]! ? strikeCount += 1 : nil
-                answer.contains(playerInput[index]!) && answer[index] != playerInput[index]! ? ballCount += 1 : nil
-                !answer.contains(playerInput[index]!) ? outCount += 1 : nil
-            }
+        var strikeCount = 0
+        var ballCount = 0
+        var outCount = 0
 
-            if outCount == playerInput.count {
-                GameMessage.printGuidanceMessage(message: GameMessage.outMessage)
-            } else {
-                print("\(strikeCount) \(GameMessage.strikeMessage.rawValue) \(ballCount) \(GameMessage.ballMessage.rawValue)")
+        
+        gameLoop : while gameStatus == .on {
+    
+            let playerInput = getPlayerInput()
+            
+            do {
+                // 이상 없이 정상 진행될 경우
+                let playerInputAsArray = try checkError(playerInput: playerInput)
+                
+                for index in playerInputAsArray.startIndex...playerInputAsArray.count - 1 {
+                    answer[index] == playerInputAsArray[index]! ? strikeCount += 1 : nil
+                    answer.contains(playerInputAsArray[index]!) && answer[index] != playerInputAsArray[index]! ? ballCount += 1 : nil
+                    !answer.contains(playerInputAsArray[index]!) ? outCount += 1 : nil
+                }
+                
+                print("strikeCount : \(strikeCount), ballCount : \(ballCount), outCount : \(outCount)")
+
+                if strikeCount == playerInput.count {
+                    GameMessage.printGuidanceMessage(message: .hitMessage)
+                    gameStatus = .off
+                } else if outCount == playerInput.count {
+                    GameMessage.printGuidanceMessage(message: .outMessage)
+                } else {
+                    print("\(strikeCount) \(GameMessage.strikeMessage.rawValue) \(ballCount) \(GameMessage.ballMessage.rawValue)")
+       
+                }
+      
+                
+            } catch InputError.inputCountError {
+                InputError.printErrorMessage(error: .inputCountError)
+                
+            } catch InputError.invalidInputError {
+                InputError.printErrorMessage(error: .invalidInputError)
+                
+            } catch InputError.zeroInputError {
+                InputError.printErrorMessage(error: .zeroInputError)
+                
+            } catch InputError.duplicateValueError {
+                InputError.printErrorMessage(error: .duplicateValueError)
+                
+            } catch {
+                InputError.printErrorMessage(error: .unknownError)
             }
             
-            
-            
-        } catch InputError.inputCountError {
-            InputError.printErrorMessage(error: InputError.inputCountError)
-            
-        } catch InputError.invalidInputError {
-            InputError.printErrorMessage(error: InputError.invalidInputError)
-            
-        } catch InputError.zeroInputError {
-            InputError.printErrorMessage(error: InputError.zeroInputError)
-            
-        } catch InputError.duplicateValueError {
-            InputError.printErrorMessage(error: InputError.duplicateValueError)
-            
-        } catch {
-            InputError.printErrorMessage(error: InputError.unknownError)
         }
         
-
     }
+
     
     private func checkError(playerInput: String) throws -> [Int?] {
         

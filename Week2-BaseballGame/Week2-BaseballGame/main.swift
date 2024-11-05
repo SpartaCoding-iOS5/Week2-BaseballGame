@@ -5,6 +5,6 @@ import Foundation
 //print(BaseballGame().isThereDuplicateValue(array: test))
 let baseballGame = BaseballGame()
 baseballGame.startNewSet()
-baseballGame.getPlayerInput()
+baseballGame.playGame()
 
 
