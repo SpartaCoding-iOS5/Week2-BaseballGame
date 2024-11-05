@@ -27,7 +27,10 @@ class NumberBaseball {
             }
             
             guard let pitch = Int(userInput), validAnswers.contains(pitch) else {
-                print(Messages().invalidPitch)
+                print("""
+
+                Aw dawg, your pitch was whack! Try 'help' for help.
+                """)
                 continue
             }
             
