@@ -13,7 +13,7 @@ extension BaseballGame {
     }
 }
 
-extension Baseball {
+extension BaseballGameLogic  {
     mutating func gameSelect() {
         if var game = self as? BaseballGame {
             print("환영합니다! 원하시는 번호를 입력해주세요")

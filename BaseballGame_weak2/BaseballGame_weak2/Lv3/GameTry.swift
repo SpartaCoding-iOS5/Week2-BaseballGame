@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Baseball {
+extension BaseballGameLogic  {
     public mutating func tryGame() {
         if let game = self as? BaseballGame {
             game.currentNumber = createRandomNumberLv3()

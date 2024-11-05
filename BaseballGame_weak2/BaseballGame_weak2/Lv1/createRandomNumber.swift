@@ -21,7 +21,9 @@ func createRandomNumber() -> [Int] {
             continue
         }
         numberArray.append(num)
-        guard numberArray.contains(0) else { continue }
+        guard numberArray.contains(0) else {
+            continue
+        }
         numberArray.removeLast()
     }
     return numberArray

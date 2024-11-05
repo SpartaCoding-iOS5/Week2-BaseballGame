@@ -8,7 +8,7 @@
 import Foundation
 
 // 야구게임 프로토콜을 준수하는 클래스 선언
-class BaseballGame: Baseball {
+class BaseballGame: BaseballGameLogic  {
     var currentNumber: [Int]?
     var result: String = ""
     var rightAnswer: Bool = false
