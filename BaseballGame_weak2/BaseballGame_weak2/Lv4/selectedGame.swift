@@ -27,9 +27,11 @@ extension Baseball {
                         print(MagicNumber.blank)
                         game.play()
                     case 2:
+                        print(MagicNumber.blank)
                         print("게임 기록을 불러옵니다.")
                         game.rightAnswer = true
                     case 3:
+                        print(MagicNumber.blank)
                         print("< 게임을 종료합니다 >")
                         game.rightAnswer = true
                     default:
