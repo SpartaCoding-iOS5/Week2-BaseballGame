@@ -9,4 +9,5 @@ import Foundation
 
 var baseballGame = BaseballGame()
 
-baseballGame.play()
+//baseballGame.play()
+baseballGame.gameSelect()
