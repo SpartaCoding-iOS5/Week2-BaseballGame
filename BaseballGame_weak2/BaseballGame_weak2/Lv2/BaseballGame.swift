@@ -63,7 +63,7 @@ class BaseballGame: BaseballGameLogic  {
         // 스트라이크가 정답값의 수와 같은지 확인
         // 같을 경우 정답을 출력하며 게임 종료
         guard !(strike == currentNumber.count) else {
-            result = "정답입니다!"
+            result = "정답입니다!\n"
             print(result)
             rightAnswer = true
             return
