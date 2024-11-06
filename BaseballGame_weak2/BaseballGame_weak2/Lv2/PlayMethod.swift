@@ -20,7 +20,7 @@ extension BaseballGameLogic  {
             game.playRecord.tryCount = 0
             
             // Test
-            print(game.currentNumber)
+//            print(game.currentNumber)
             
             // 정답을 맞출 때까지 반복
             while game.rightAnswer != true {
