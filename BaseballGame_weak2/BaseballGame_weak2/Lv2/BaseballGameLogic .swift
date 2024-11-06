@@ -8,7 +8,7 @@
 import Foundation
 
 // 야구게임이 준수해야할 프로토콜 선언
-protocol BaseballGameLogic  {
+protocol BaseballGameLogic: RecordLoading, ExitGame  {
     var currentNumber: [Int]? { get set }
     var result: String { get set }
     var rightAnswer: Bool { get set }

@@ -7,14 +7,20 @@
 
 import Foundation
 
-func loadGameRecord(_ history: [String]) {
-    if !history.isEmpty {
-        history.forEach { record in
-            print(record)
+protocol RecordLoading {
+    func loadGameRecord(_ history: [String])
+}
+
+extension BaseballGameLogic {
+    func loadGameRecord(_ history: [String]) {
+        if !history.isEmpty {
+            history.forEach { record in
+                print(record)
+            }
+            print(MagicNumber.blank)
+        } else {
+            print("아직 저장된 게임 기록이 없습니다.")
+            print(MagicNumber.blank)
         }
-        print(MagicNumber.blank)
-    } else {
-        print("아직 저장된 게임 기록이 없습니다.")
-        print(MagicNumber.blank)
     }
 }
