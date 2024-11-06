@@ -17,6 +17,7 @@ extension BaseballGameLogic  {
         var playHistory: [String] = []
         
         print("환영합니다! 원하시는 번호를 입력해주세요")
+        
         // 게임 종료를 선택할 때까지 반복
         while isOnGame {
             print("1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기")
@@ -33,7 +34,7 @@ extension BaseballGameLogic  {
                     loadGameRecord(playHistory)
                 case 3:
                     print(MagicNumber.blank)
-                    isOnGame = exitGame()
+                    isOnGame = !exitGame()
                 default:
                     print("올바르지 않은 입력값입니다.")
                 }

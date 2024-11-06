@@ -12,6 +12,8 @@ protocol ExitGame {
 }
 
 extension BaseballGameLogic {
+    /// 게임을 종료하는 메소드
+    /// - Returns: true 라면 종료, false 라면 되돌아가기
     func exitGame() -> Bool {
         var answer: Bool = true
         
@@ -21,10 +23,10 @@ extension BaseballGameLogic {
         let input = readLine()
         if let input {
             if input == "y" || input == "Y" {
-                answer = false
+                answer = true
                 print("< 게임을 종료합니다 >")
             } else if input == "n" || input == "N" {
-                answer = true
+                answer = false
                 print(MagicNumber.blank)
             } else {
                 print("올바르지 않은 입력값입니다.")

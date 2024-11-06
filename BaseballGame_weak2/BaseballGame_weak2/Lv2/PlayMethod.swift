@@ -13,14 +13,13 @@ extension BaseballGameLogic  {
     public mutating func play() -> String {
         print("< 게임을 시작합니다 >")
         
-        // 게임을 실행
+        // 다운캐스팅된 game은 BaseballGame 인스턴스이다.
+        // play()를 실행한 인스턴스는 main에서 생성한 인스턴스.
+        // game = main에서 생성한 인스턴스.
         if let game = self as? BaseballGame {
             game.currentNumber = createRandomNumberLv3()
             game.playRecord.playCount += 1
             game.playRecord.tryCount = 0
-            
-            // Test
-//            print(game.currentNumber)
             
             // 정답을 맞출 때까지 반복
             while game.rightAnswer != true {
@@ -52,7 +51,7 @@ extension BaseballGameLogic  {
             
             return game.playRecord.history
         }
-        return "게임 기록을 불러올 수 없습니다"
+        return "게임을 실행할 수 없습니다."
     }
 }
 

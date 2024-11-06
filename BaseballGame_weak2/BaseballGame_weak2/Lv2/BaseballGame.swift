@@ -42,14 +42,6 @@ class BaseballGame: BaseballGameLogic  {
             throw BaseballGameError.InputError
         }
         
-        // 조건 3. 입력값에 0이 있을 경우 오류
-        // Lv3 에서 0을 포함했기 때문에 조건 폐기
-//        guard !numberArray.contains(0) else {
-//            result = "올바르지 않은 입력값입니다."
-//            print(result)
-//            return
-//        }
-        
         // 조건 4. 입력의 첫번째 값으로 0이 오면 오류
         guard numberArray.first != 0 else {
             throw BaseballGameError.enterValueOfZero
