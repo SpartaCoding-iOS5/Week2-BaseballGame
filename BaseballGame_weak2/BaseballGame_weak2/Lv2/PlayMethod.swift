@@ -10,12 +10,14 @@ import Foundation
 // 프로토콜에서 메소드 구현하기
 extension BaseballGameLogic  {
     /// 게임을 시작하는 메소드
-    public mutating func play() {
+    public mutating func play() -> String {
         print("< 게임을 시작합니다 >")
         
         // 게임을 실행
         if let game = self as? BaseballGame {
             game.currentNumber = createRandomNumberLv3()
+            game.playRecord.playCount += 1
+            game.playRecord.tryCount = 0
             
             // 정답을 맞출 때까지 반복
             while game.rightAnswer != true {
@@ -40,7 +42,14 @@ extension BaseballGameLogic  {
                     print("올바르지 않은 입력값입니다.")
                 }
             }
+            
+            // 게임의 시도 횟수를 반환
+            game.playRecord.savedGameRecord()
+            game.rightAnswer = false
+            
+            return game.playRecord.history
         }
+        return "게임 기록을 불러올 수 없습니다"
     }
 }
 

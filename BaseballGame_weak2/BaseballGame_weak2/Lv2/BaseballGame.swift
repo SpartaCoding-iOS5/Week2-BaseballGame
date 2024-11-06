@@ -12,6 +12,7 @@ class BaseballGame: BaseballGameLogic  {
     var currentNumber: [Int]?
     var result: String = ""
     var rightAnswer: Bool = false
+    var playRecord: PlayData = PlayData()
     
     /// 숫자 야구게임의 정답과 입력값 비교
     /// - Parameters:
@@ -23,6 +24,9 @@ class BaseballGame: BaseballGameLogic  {
         
         var strike: Int = 0
         var ball: Int = 0
+        
+        // 시도횟수를 카운트
+        self.playRecord.tryCount += 1
         
         while number > 0 {
             // 조건 1. 중복값이 있을 경우 오류
