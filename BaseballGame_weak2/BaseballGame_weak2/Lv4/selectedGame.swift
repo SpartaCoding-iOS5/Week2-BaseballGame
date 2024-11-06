@@ -29,7 +29,7 @@ extension BaseballGameLogic  {
                     playHistory.append(play())
                 case 2:
                     print(MagicNumber.blank)
-                    print("게임 기록을 불러옵니다.")
+                    print("< 게임 기록을 불러옵니다 >")
                     loadGameRecord(playHistory)
                 case 3:
                     print(MagicNumber.blank)

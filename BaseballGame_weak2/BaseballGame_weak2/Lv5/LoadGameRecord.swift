@@ -8,8 +8,13 @@
 import Foundation
 
 func loadGameRecord(_ history: [String]) {
-    history.forEach { record in
-        print(record)
+    if !history.isEmpty {
+        history.forEach { record in
+            print(record)
+        }
+        print(MagicNumber.blank)
+    } else {
+        print("아직 저장된 게임 기록이 없습니다.")
         print(MagicNumber.blank)
     }
 }

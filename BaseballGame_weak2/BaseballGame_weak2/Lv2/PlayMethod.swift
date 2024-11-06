@@ -19,6 +19,9 @@ extension BaseballGameLogic  {
             game.playRecord.playCount += 1
             game.playRecord.tryCount = 0
             
+            // Test
+            print(game.currentNumber)
+            
             // 정답을 맞출 때까지 반복
             while game.rightAnswer != true {
                 print("숫자를 입력하세요")
