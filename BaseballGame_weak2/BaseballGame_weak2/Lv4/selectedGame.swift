@@ -33,8 +33,7 @@ extension BaseballGameLogic  {
                     loadGameRecord(playHistory)
                 case 3:
                     print(MagicNumber.blank)
-                    print("< 게임을 종료합니다 >")
-                    isOnGame = false
+                    isOnGame = exitGame()
                 default:
                     print("올바르지 않은 입력값입니다.")
                 }
