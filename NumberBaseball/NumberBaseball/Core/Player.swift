@@ -14,19 +14,22 @@ class Player {
     var pitchCount: Int
     var didWinTheGame: Int // 0 == false, 1 == true
     var shouldExitGameLoop: Bool
+    var currentTargetNumber: Int
     
     init(
         records: [[Int]] = [],
         currentGameNumber: Int = 1,
         pitchCount: Int = 0,
         didWinTheGame: Int = 0,
-        shouldExitGameLoop: Bool = false
+        shouldExitGameLoop: Bool = false,
+        currentTargetNumber: Int = 0
         ) {
         self.records = records
         self.currentGameNumber = currentGameNumber
         self.pitchCount = pitchCount
         self.didWinTheGame = didWinTheGame
         self.shouldExitGameLoop = shouldExitGameLoop
+        self.currentTargetNumber = currentTargetNumber
         }
     
     convenience init(_ records: [[Int]], _ currentGameNumber: Int) {
@@ -36,9 +39,14 @@ class Player {
         )
     }
     
+    // Take a random target number
+    func takeTargetNumber() {
+        self.currentGameNumber = TargetNumberGenerator().random()
+    }
+    
     // Record game
-    func record(_ targetNumber: Int) {
-        self.records.append([self.currentGameNumber, self.didWinTheGame, self.pitchCount, targetNumber])
+    func record() {
+        self.records.append([self.currentGameNumber, self.didWinTheGame, self.pitchCount, self.currentTargetNumber])
         showRecord(self.currentGameNumber - 1)
     }
     

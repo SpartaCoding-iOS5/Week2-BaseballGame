@@ -34,11 +34,11 @@ struct GameJudge {
     }
     
     // Evaluate the user answer: Record game if correct, Give hints if wrong.
-    func check(_ player: Player, _ targetNumber: Int, _ pitch: Int) {
+    func check(_ player: Player, _ pitch: Int) {
         var strikeCount = 0
         var ballCount = 0
         
-        let targetNumberDigits = self.digits(targetNumber)
+        let targetNumberDigits = self.digits(player.currentTargetNumber)
         let pitchDigits = self.digits(pitch)
         
         for i in 0..<targetNumberDigits.count {
@@ -57,7 +57,7 @@ struct GameJudge {
         
         if strikeCount == 3 {
             player.didWinTheGame = 1 // 0 == false, 1 == true
-            player.record(targetNumber)
+            player.record()
             print("\nAyy, congrats! You nailed that \(self.pitchCountString(player.pitchCount)) pitch perfectly!") ; sleep(2) // Victory Royale
             player.shouldExitGameLoop = true
             return
