@@ -9,17 +9,24 @@ import Foundation
 
 // Take user inputs and send them to judge
 struct GameManager {
+    private func generateTargetNumberWhilePrint(_ player: Player) {
+        let group = DispatchGroup() // Background thread for target number generation
+        let queue = DispatchQueue.global()
+        
+        group.enter() ; queue.async { player.takeTargetNumber() ; group.leave() } // Take a random target number, TC: O(n)
+        
+        print("\nAyy, bet! We about to dive in: ", terminator: "")
+        for i in 0...2 { print("\(3 - i)...") ; sleep(1) }
+        print("")
+        
+        group.wait() // Wait for the target number to be generated
+    }
+    
     func play(_ player: Player) {
         // Game intro sequence
         player.resetDidWinTheGame() // reset to 0 (0 == false, 1 == true)
         player.resetPitchCount() // reset pitch count to 0
-        
-        let queue = DispatchQueue.global() // Background thread
-        queue.async { player.takeTargetNumber() } // Take a random target number, TC: O(n)
-        
-        print("\nAyy, bet! We about to dive in: ", terminator: "") // Print while trget number is being generated (3 seconds)
-        for i in 0...2 { print("\(3 - i)...") ; sleep(1) }
-        print("")
+        generateTargetNumberWhilePrint(player) // Take a random target number while printing countdown
         
         // Game Loop
         while !player.shouldExitGameLoop {
