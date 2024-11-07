@@ -18,9 +18,9 @@ protocol RecordLoading {
 extension BaseballGameLogic {
     /// 게임 기록을 불러오는 메소드
     /// - Parameter history: 게임 기록을 저장한 String 배열을 입력
-    func loadGameRecord(_ history: [String]) {
-        if !history.isEmpty {
-            history.forEach { record in
+    func loadGameRecord(_ data: [String]) {
+        if !data.isEmpty {
+            data.forEach { record in
                 print(record)
             }
             print(MagicNumber.blank)

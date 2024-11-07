@@ -17,7 +17,7 @@ extension BaseballGameLogic  {
         // play()를 실행한 인스턴스는 main에서 생성한 인스턴스.
         // game = main에서 생성한 인스턴스.
         if let game = self as? BaseballGame {
-            game.currentNumber = createRandomNumberLv3()
+            game.answer = createAnswerLv3()
             game.playRecord.playCount += 1
             game.playRecord.tryCount = 0
                         
@@ -27,28 +27,27 @@ extension BaseballGameLogic  {
                 
                 // 콘솔 입력값을 확인하고 Int 타입으로 변환
                 // 변환 실패시 오류 메세지 출력
-                let input = readLine()
-                if let input {
+                let userInput = readLine()
+                if let userInput {
                     do {
-                        try game.compareNumber(game.currentNumber ?? [], input)
+                        try game.compareNumber(game.answer ?? [], userInput)
                     } catch BaseballGameError.InputError {
-                        print("올바르지 않은 입력값입니다.\n\(BaseballGameError.InputError.errorDescription)")
+                        print("\n올바르지 않은 입력값입니다.\n\(BaseballGameError.InputError.errorDescription)")
                     } catch BaseballGameError.duplicateValue {
-                        print("올바르지 않은 입력값입니다.\n\(BaseballGameError.duplicateValue.errorDescription)")
+                        print("\n올바르지 않은 입력값입니다.\n\(BaseballGameError.duplicateValue.errorDescription)")
                     } catch BaseballGameError.enterValueOfZero {
-                        print("올바르지 않은 입력값입니다.\n\(BaseballGameError.enterValueOfZero.errorDescription)")
+                        print("\n올바르지 않은 입력값입니다.\n\(BaseballGameError.enterValueOfZero.errorDescription)")
                     } catch {
                         print(error.localizedDescription)
                     }
                 } else {
-                    print("올바르지 않은 입력값입니다.")
+                    print("\n올바르지 않은 입력값입니다.\n")
                 }
             }
-            
-            // 게임의 시도 횟수를 반환
-            
+            // 게임 초기화
             game.rightAnswer = false
             
+            // 게임의 시도 횟수를 반환
             return game.playRecord.record
         }
         return "게임을 실행할 수 없습니다."

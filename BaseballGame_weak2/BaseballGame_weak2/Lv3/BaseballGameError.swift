@@ -16,11 +16,11 @@ enum BaseballGameError: Error, LocalizedError {
     var errorDescription: String {
         switch self {
         case .duplicateValue:
-            return "(중복된 값이 있습니다)"
+            return "(중복된 값이 있습니다)\n"
         case .InputError:
-            return "(정답과 입력한 숫자의 수가 다릅니다)"
+            return "(정답과 입력한 숫자의 수가 다릅니다)\n"
         case .enterValueOfZero:
-            return "(첫번째 입력값이 0이면 안됩니다)"
+            return "(첫번째 입력값이 0이면 안됩니다)\n"
         }
     }
 }

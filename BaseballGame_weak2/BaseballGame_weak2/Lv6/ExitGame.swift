@@ -15,18 +15,18 @@ extension BaseballGameLogic {
     /// 게임을 종료하는 메소드
     /// - Returns: true 라면 종료, false 라면 되돌아가기
     func exitGame() -> Bool {
-        var answer: Bool = true
+        var exit: Bool = true
         
         print("게임을 종료하시겠습니까?")
         print("Y / N")
         
-        let input = readLine()
-        if let input {
-            if input == "y" || input == "Y" {
-                answer = true
+        let userInput = readLine()
+        if let userInput {
+            if userInput == "y" || userInput == "Y" {
+                exit = true
                 print("< 게임을 종료합니다 >")
-            } else if input == "n" || input == "N" {
-                answer = false
+            } else if userInput == "n" || userInput == "N" {
+                exit = false
                 print(MagicNumber.blank)
             } else {
                 print("올바르지 않은 입력값입니다.")
@@ -36,6 +36,6 @@ extension BaseballGameLogic {
             print("올바르지 않은 입력값입니다.")
         }
         
-        return answer
+        return exit
     }
 }
