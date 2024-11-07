@@ -16,7 +16,7 @@ func startGame() {
                 game = BaseballGameLevel2()
             case 3:
                 game = BaseballGameLevel3()
-                answerer = UserLevel3()
+                answerer = UserOverLevel3()
             case 4:
                 break
             case 5:
