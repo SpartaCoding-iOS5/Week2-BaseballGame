@@ -39,6 +39,7 @@ class Player {
     // Record game
     func record(_ targetNumber: Int) {
         self.records.append([self.currentGameNumber, self.didWinTheGame, self.pitchCount, targetNumber])
+        showRecord(self.currentGameNumber - 1)
     }
     
     // Reset pitchCount
