@@ -32,11 +32,11 @@ extension BaseballGameLogic  {
                     do {
                         try game.compareNumber(game.currentNumber ?? [], intInput)
                     } catch BaseballGameError.InputError {
-                        print("올바르지 않은 입력값입니다.\n\(BaseballGameError.InputError.rawValue)")
+                        print("올바르지 않은 입력값입니다.\n\(BaseballGameError.InputError.errorDescription)")
                     } catch BaseballGameError.duplicateValue {
-                        print("올바르지 않은 입력값입니다.\n\(BaseballGameError.duplicateValue.rawValue)")
+                        print("올바르지 않은 입력값입니다.\n\(BaseballGameError.duplicateValue.errorDescription)")
                     } catch BaseballGameError.enterValueOfZero {
-                        print("올바르지 않은 입력값입니다.\n\(BaseballGameError.enterValueOfZero.rawValue)")
+                        print("올바르지 않은 입력값입니다.\n\(BaseballGameError.enterValueOfZero.errorDescription)")
                     } catch {
                         print(error.localizedDescription)
                     }
