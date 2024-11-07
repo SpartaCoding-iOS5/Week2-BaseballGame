@@ -8,7 +8,7 @@
 // Choose a random number from ValidPitches
 struct TargetNumberGenerator {
     func random() -> Int {
-        if let targetNumber = ValidTargetNumbers().set.randomElement() {
+        if let targetNumber = ValidTargetNumbers().array.randomElement() {
             return targetNumber
         } else {
             print("Error: Invalid ValidTargetNumbers List")

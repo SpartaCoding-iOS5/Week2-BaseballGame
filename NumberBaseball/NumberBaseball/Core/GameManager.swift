@@ -13,7 +13,7 @@ struct GameManager {
         let group = DispatchGroup() // Background thread for target number generation
         let queue = DispatchQueue.global()
         
-        group.enter() ; queue.async { player.takeTargetNumber() ; group.leave() } // Take a random target number, TC: O(n)
+        group.enter() ; queue.async { player.takeTargetNumber() ; group.leave() } // Take a random target number
         
         print("\nAyy, bet! We about to dive in: ", terminator: "")
         for i in 0...2 { print("\(3 - i)...") ; sleep(1) }
