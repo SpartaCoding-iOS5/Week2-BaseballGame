@@ -8,7 +8,8 @@ func startGame() {
         case 1:
             levelOne()
         case 2:
-            levelTwo()
+            let levleTwo = BaseballGameLv2()
+            levleTwo.startGame()
         case 3:
             levelThree()
         case 4:
