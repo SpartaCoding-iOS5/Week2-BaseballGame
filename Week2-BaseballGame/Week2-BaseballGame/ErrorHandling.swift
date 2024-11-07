@@ -3,7 +3,6 @@
 enum ErrorHandling: Error {
     case wrongInput
     case duplicateNumber
-    case inputZero
     case outOfRange
     case emptyInput
 }

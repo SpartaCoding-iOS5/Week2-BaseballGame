@@ -19,18 +19,14 @@ class GetUserValue {
         guard (Int(input) != nil) else {
             throw ErrorHandling.wrongInput
         }
-        guard !input.contains("0") else {
-            throw ErrorHandling.inputZero
-        }
         guard let intValue = Int(input), (100...999).contains(intValue) else {
             throw ErrorHandling.outOfRange
         }
         guard Set(input).count == 3 else {
             throw ErrorHandling.duplicateNumber
         }
+        // 유저 입력 값을 배열에 추가
         let result = input.map { Int(String($0))! }
         userArray.append(contentsOf: result)
-    
-        print(userArray)
     }
 }
