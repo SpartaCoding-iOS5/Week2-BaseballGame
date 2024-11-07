@@ -6,7 +6,6 @@
 //
 
 class BaseballGameLevel5: BaseballGameLevel4 {
-    
     override func startGame(questioner: any Player, answerer: any Player) throws {
         print("환영합니다! 원하시는 번호를 입력해주세요")
         
