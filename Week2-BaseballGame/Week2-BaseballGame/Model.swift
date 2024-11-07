@@ -10,22 +10,19 @@ enum GameStatus: Int {
          off = 0
 }
 
+enum GameConfig {
+    static let numberOfAnswer = 3
+    static let rangeOfAnswerWithZero = 0...9
+    static let rangeOfAnswerWithoutZero = 1...9
+}
 
-enum GameMessage {
-    static let welcomeMessage = "Welcome! Please enter the number to execute. \n 1. Game Start 2. Record 3. Exit"
-    static let gemeStartMessage = "*** Game Start ***"
-    static let requireInputMessage = "Please enter the numbers for each question mark in order, then press Enter."
-    static let gameEndMessage = "***Game End***"
-    static let noRecordMessage = "No Record"
-    static let inputAgainMessage = "Input the number to execute again."
-    static let strikeMessage = "Strike"
-    static let ballMessage = "Ball"
-    static let outMessage = "Out!"
-    static let hitMessage = "Hit!"
-    
-    static func printGuidanceMessage(message: String) {
-        print(message)
-    }
+
+enum Guidance {
+    case welcome,
+         gameStart, gameEnd,
+         requireInput, inputAgain,
+         noRecord,
+         strike, ball, out, hit
 }
 
 /** 값 비교 전 체크 필요
@@ -49,26 +46,6 @@ enum InputError: Error {
          zeroInputError,
          duplicateValueError,
          unknownError
-    
-    static func printErrorMessage(error: InputError) {
-        
-        var message = ""
-        
-        switch error {
-        case inputCountError:
-            message = "The number of inputs is insufficient."
-        case invalidInputError:
-            message = "Invalid input."
-        case zeroInputError:
-            message = "The first position cannot contain a zero."
-        case duplicateValueError:
-            message = "There are duplicate values."
-        case unknownError:
-            message = "There are unknown errors."
-        }
-        
-        print(message)
-    }
 }
 
 

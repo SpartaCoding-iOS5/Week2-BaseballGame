@@ -10,20 +10,19 @@ class BaseballGame {
     
     // 기록 매니저
     private var recordManager: RecordManager
-    init(recordManager: RecordManager) {
+    private var printManager: PrintManager
+    init(recordManager: RecordManager, printManager: PrintManager) {
         self.recordManager = recordManager
+        self.printManager = printManager
     }
-    // 정답 개수
-    private let numberOfAnswer = 3
-    // 정답 범위
-    private let rangeOfAnswerWithZero = 0...9
-    private let rangeOfAnswerWithoutZero = 1...9
+
+
     // 게임 상태
     private var gameStatus: GameStatus = .on {
         willSet(newStatus) {
             switch newStatus {
-            case .on : GameMessage.printGuidanceMessage(message: GameMessage.welcomeMessage)
-            case .off : GameMessage.printGuidanceMessage(message: GameMessage.gameEndMessage)
+            case .on : printManager.printGuideance(guide: Guidance.welcome)
+            case .off : printManager.printGuideance(guide: Guidance.gameEnd)
             }
         }
     }
@@ -41,77 +40,82 @@ class BaseballGame {
                 break commandLoop
             case "2":
                 recordManager.showRecord()
-                GameMessage.printGuidanceMessage(message: GameMessage.inputAgainMessage)
+                printManager.printGuideance(guide: Guidance.inputAgain)
 
             case "3":
                 gameStatus = .off
                 break commandLoop
             default :
-                InputError.printErrorMessage(error: .invalidInputError)
-                GameMessage.printGuidanceMessage(message: GameMessage.inputAgainMessage)
+                printManager.printError(error: InputError.invalidInputError)
+                printManager.printGuideance(guide: Guidance.inputAgain)
             }
         }
     }
     
 
     func playGame() {
-        
-        // 랜덤 값 받아오기
-        let answer = newGame()
+
+        let answer = newGame() // 랜덤 값 받아오기
         var score = Score()
         var tryCount = 0
         
         
         while gameStatus == .on {
             
+            // 플레이어에게 값 받기
             let playerInput = getPlayerInput()
             
             do {
-                // 예외 상황 처리, 예외 없을 경우 배열로 값 받아오기
+                // 예외 없을 경우
                 let playerInputAsArray = try checkError(input: playerInput)
                 
-                for index in playerInputAsArray[0]...playerInputAsArray.count - 1 {
-                    let number = playerInputAsArray[index]
-                    let matchedAnswer = answer[index]
-                    
-                    // 1.
-                    matchedAnswer == number ? score.strikeCount += 1 : nil
-                    answer.contains(playerInputAsArray[index]) && answer[index] != playerInputAsArray[index] ? score.ballCount += 1 : nil
-                    !answer.contains(playerInputAsArray[index]) ? score.outCount += 1 : nil
-                }
+                score = calculateScore(playerInput: playerInputAsArray, answer: answer)
                 
-                if score.strikeCount == numberOfAnswer {
-                    GameMessage.printGuidanceMessage(message: GameMessage.hitMessage)
-                    recordManager.recordSet(tryCount: tryCount + 1)
+                if score.strikeCount == GameConfig.numberOfAnswer {
+                    printManager.printGuideance(guide: Guidance.hit)
+                    recordManager.recordSet(tries: tryCount + 1)
                     startGame()
-                    
-                } else if score.outCount == numberOfAnswer {
-                    GameMessage.printGuidanceMessage(message: GameMessage.outMessage)
+                } else if score.outCount == GameConfig.numberOfAnswer {
+                    printManager.printGuideance(guide: Guidance.out)
                 } else {
-                    print("\(score.strikeCount) \(GameMessage.strikeMessage) \(score.ballCount) \(GameMessage.ballMessage)")
+                    print("\(score.strikeCount) \(Guidance.strike) \(score.ballCount) \(Guidance.ball)")
                 }
                 
                 score = Score()
                 tryCount += 1
                 
-                
+                // 예외 경우
             } catch InputError.inputCountError {
-                InputError.printErrorMessage(error: .inputCountError)
+                printManager.printError(error: InputError.inputCountError)
                 
             } catch InputError.invalidInputError {
-                InputError.printErrorMessage(error: .invalidInputError)
+                printManager.printError(error: InputError.invalidInputError)
                 
             } catch InputError.zeroInputError {
-                InputError.printErrorMessage(error: .zeroInputError)
+                printManager.printError(error: InputError.zeroInputError)
                 
             } catch InputError.duplicateValueError {
-                InputError.printErrorMessage(error: .duplicateValueError)
-                
+                printManager.printError(error: InputError.duplicateValueError)
             } catch {
-                InputError.printErrorMessage(error: .unknownError)
+                printManager.printError(error: InputError.unknownError)
             }
         }
         
+    }
+    
+    
+    private func calculateScore(playerInput: [Int], answer: [Int]) -> Score {
+        var score = Score()
+        for (index, number) in playerInput.enumerated() {
+            if answer [index] == number {
+                score.strikeCount += 1
+            } else if answer.contains(number) {
+                score.ballCount += 1
+            } else {
+                score.outCount += 1
+            }
+        }
+        return score
     }
     
     
@@ -119,19 +123,19 @@ class BaseballGame {
     private func newGame() -> [Int] {
         var answer: [Int] = []
         var questionBoxes = ""
-        var range = rangeOfAnswerWithoutZero
+        var range = GameConfig.rangeOfAnswerWithoutZero
         
-        while answer.count < numberOfAnswer {
+        while answer.count < GameConfig.numberOfAnswer {
             
             let randomNumber = Int.random(in: range)
             if !answer.contains(randomNumber) {
                 answer.append(randomNumber)
-                range = rangeOfAnswerWithZero // 랜덤 범위 - 0을 포함한 범위로 변경
+                range = GameConfig.rangeOfAnswerWithZero // 랜덤 범위 - 0을 포함한 범위로 변경
                 questionBoxes.append("[ ? ] ")
             }
         }
         
-        GameMessage.printGuidanceMessage(message: GameMessage.gemeStartMessage)
+        printManager.printGuideance(guide: Guidance.gameStart)
         print(questionBoxes)
         
         print(answer) //test
@@ -140,10 +144,8 @@ class BaseballGame {
     
     // 입력 값 받아와서 필요한 처리 후 리턴
     private func getPlayerInput() -> String {
-        GameMessage.printGuidanceMessage(message: GameMessage.requireInputMessage)
-        var tempInput = readLine()!
-        tempInput.replace(" " , with: "")
-        return tempInput
+        printManager.printGuideance(guide: Guidance.requireInput)
+        return readLine()?.trimmingCharacters(in: .whitespaces) ?? ""
     }
     
     
@@ -154,12 +156,12 @@ class BaseballGame {
         let inputAsStringArray = input.split(separator: "")
         
         // 1. 입력 값 개수가 요구치와 다른지 체크
-        guard inputAsStringArray.count == numberOfAnswer else {
+        guard inputAsStringArray.count == GameConfig.numberOfAnswer else {
             throw InputError.inputCountError
         }
         
         // String 배열 -> Int 배열
-        var inputAsIntArray = inputAsStringArray.map({ Int($0) })
+        let inputAsIntArray = inputAsStringArray.map({ Int($0) })
         
         // 2. String값 Int로 바꿀경우 nil, 숫자 아닌 값 입력되었는지 체크
         guard !inputAsIntArray.contains(nil) else {

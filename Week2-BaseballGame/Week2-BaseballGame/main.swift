@@ -1,6 +1,7 @@
 import Foundation
 
 let recordManager = RecordManager()
-let baseballGame = BaseballGame(recordManager: recordManager)
+let printManager = PrintManager()
+let baseballGame = BaseballGame(recordManager: recordManager, printManager: printManager)
 baseballGame.startGame()
 
