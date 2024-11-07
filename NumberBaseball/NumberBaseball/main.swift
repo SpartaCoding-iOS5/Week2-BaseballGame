@@ -31,7 +31,7 @@ while !shouldExitMainLoop { // Main Loop
     switch userInputNumber {
     case "1": // 1. Start the game
         player.shouldExitGameLoop = false
-        NumberBaseball().play(player)
+        GameManager().play(player)
     case "2" : // 2. Check the game stats
         player.showRecords()
     case "3": // 3. How to play
