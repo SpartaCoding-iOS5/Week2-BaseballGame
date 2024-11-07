@@ -49,7 +49,7 @@ extension BaseballGameLogic  {
             
             game.rightAnswer = false
             
-            return game.playRecord.savedGameRecord()
+            return game.playRecord.record
         }
         return "게임을 실행할 수 없습니다."
     }

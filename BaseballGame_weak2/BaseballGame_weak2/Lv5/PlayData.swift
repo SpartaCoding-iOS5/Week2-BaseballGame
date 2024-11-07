@@ -12,10 +12,8 @@ struct PlayData {
     var playCount: Int = 0
     var tryCount: Int = 0
     
-    /// playCount와 tryCount를 history에 저장하는 메소드
-    mutating func savedGameRecord() -> String {
-        let record: String = "\(self.playCount)번째 게임: 시도횟수 - \(self.tryCount)"
-        
-        return record
+    /// playCount와 tryCount를 history에 저장하는 연산 파라미터
+    var record: String {
+        return "\(self.playCount)번째 게임: 시도횟수 - \(self.tryCount)"
     }
 }
