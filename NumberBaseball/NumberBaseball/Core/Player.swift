@@ -64,20 +64,26 @@ class Player {
         self.currentGameNumber += 1
     }
     
+    // Record game
+    func record() {
+        self.records.append([self.currentGameNumber, self.didWinTheGame, self.pitchCount, self.currentTargetNumber])
+        showRecord(self.currentGameNumber - 1)
+    }
+    
     // Show record
     func showRecord(_ index: Int) {
         let record = records[index]
         
         if record[1] == 1 { // < Wins >
-            if record[2] == 1 { // Hole in One
-                print("[Game \(record[0])] Nailed with only \(record[2]) pitch!!! - \(record[3])") ; return
+            if record[2] == 1 { // Win: Hole in One
+                print("[Game \(record[0])] Nailed with only \(record[2]) pitch!!! -> \(record[3])") ; return
             } // Common Win
-            print("[Game \(record[0])] Nailed with \(record[2]) pitches! - \(record[3])")
+            print("[Game \(record[0])] Nailed with \(record[2]) pitches! -> \(record[3])")
         } else if record[1] == 0 { // < Loses >
-            if record[2] == 1 { // Speedrun attempt? Lose
-                print("[Game \(record[0])] Tried with \(record[2]) pitch. - \(record[3])") ; return
+            if record[2] == 1 { // Lose: Speedrun attempt?
+                print("[Game \(record[0])] Tried with \(record[2]) pitch. -> \(record[3])") ; return
             } // Common Lose
-            print("[Game \(record[0])] Tried with \(record[2]) pitches.. - \(record[3])")
+            print("[Game \(record[0])] Tried with \(record[2]) pitches... -> \(record[3])")
         }
     }
     
@@ -85,7 +91,7 @@ class Player {
     func showRecords() {
         sleep(1) ; print("\n< Game Records >")
         
-        guard !records.isEmpty else { // if records is empty
+        guard !records.isEmpty else { // if records is empty, print this
             print("There's no record, dawg!!") ; sleep(1)
             return
         }
