@@ -8,7 +8,7 @@
 import Foundation
 
 // Take user inputs and send them to judge
-class NumberBaseball {
+struct NumberBaseball {
     let targetNumber = TargetNumberGenerator().random() // Generate a target number
     let validTargetNumbers = Set(ValidTargetNumbers().threeDigits) // Declare valid taget numbers
     
