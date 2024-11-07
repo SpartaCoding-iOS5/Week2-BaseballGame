@@ -26,7 +26,7 @@ struct QuitPrompt: InterruptiblePrompt {
                 print("\nGotcha homie, gettin back into game.") ; sleep(1)
                 return false // shouldExitGameLoop = false
             default:
-                print("\nYou alright? Enter 'Y' or 'N'.")
+                print("\nYou alright? Enter 'Y' or 'N'.") // Go back to Y/N prompt
             }
         }
     }

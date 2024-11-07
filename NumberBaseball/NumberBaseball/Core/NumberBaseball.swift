@@ -14,6 +14,7 @@ class NumberBaseball {
     
     func play(_ player: Player) {
         // Game intro sequence
+        player.resetDidWinTheGame() // reset (0 == false, 1 == true)
         player.resetPitchCount()
         print("\nAyy, bet! We about to dive in: ", terminator: "")
         for i in 0...2 { print("\(3 - i)...") ; sleep(1) }
@@ -30,7 +31,13 @@ class NumberBaseball {
                 _ = HelpPrompt().ask()
                 continue
             } else if userInput == "quit" { // Command: Shows a prompt to quit current game
-                player.shouldExitGameLoop = QuitPrompt().ask()
+                if QuitPrompt().ask() {
+                    if player.pitchCount != 0 {
+                        player.record(targetNumber)
+                        player.addCurrentGameNumber()
+                    }
+                    player.shouldExitGameLoop = true
+                }
                 continue
             }
             
@@ -41,7 +48,7 @@ class NumberBaseball {
             
             // Valid Pitch accepted to be sent to judge
             player.addPitchCount()
-            GameJudge().check(player, targetNumber, pitch) // returns -1 when correct, otherwise print hints and adds up
+            GameJudge().check(player, targetNumber, pitch) // game ends when correct, otherwise print hints and return
         }
     }
 }

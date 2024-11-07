@@ -28,7 +28,7 @@ struct ExitPrompt: InterruptiblePrompt {
                 print("\nI gotcha homie, let's get back.") ; sleep(1)
                 return false // Return to Main Loop
             default:
-                print("\nYou alright? Enter 'Y' or 'N'.") // Go back to Input Prompt
+                print("\nYou alright? Enter 'Y' or 'N'.") // Go back to Y/N prompt
             }
         }
         

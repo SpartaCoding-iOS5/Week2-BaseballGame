@@ -7,14 +7,14 @@
 
 import Foundation
 
-let player = Player()// Make an instance of Player
+let player = Player() // Make an instance of Player
 var shouldExitMainLoop = false // Being true will exit main loop and thus program
 
 // Provide a number-based interface
 while !shouldExitMainLoop { // Main Loop
     print("""
     
-    This is a number baseball game. Pick ya move:
+    !=== Number Baseball ===!
     
     1. Start game
     2. Check out stats
@@ -29,6 +29,7 @@ while !shouldExitMainLoop { // Main Loop
     
     switch userInput {
     case "1": // 1. Start the game
+        player.shouldExitGameLoop = false
         NumberBaseball().play(player)
     case "2" : // 2. Check the game stats
         player.showRecords()

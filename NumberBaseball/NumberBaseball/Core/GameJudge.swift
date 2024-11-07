@@ -11,12 +11,12 @@ import Foundation
 struct GameJudge {
     
     // Provide different string depending on the number of pitch counter
-    private func pitchCounterString(_ pitchCounter: Int) -> String {
-        switch pitchCounter {
-        case 1: return "\(pitchCounter)st"
-        case 2: return "\(pitchCounter)nd"
-        case 3: return "\(pitchCounter)rd"
-        default: return "\(pitchCounter)th"
+    private func pitchCountString(_ pitchCount: Int) -> String {
+        switch pitchCount {
+        case 1: return "\(pitchCount)st"
+        case 2: return "\(pitchCount)nd"
+        case 3: return "\(pitchCount)rd"
+        default: return "\(pitchCount)th"
         }
     }
     
@@ -56,13 +56,13 @@ struct GameJudge {
         }
         
         if strikeCount == 3 {
-            player.record()
-            print("\nAyy, congrats! You nailed that \(self.pitchCounterString(player.pitchCount)) pitch perfectly!") ; sleep(3) // Victory Royale
+            player.didWinTheGame = 1 // 0 == false, 1 == true
+            player.record(targetNumber)
+            print("\nAyy, congrats! You nailed that \(self.pitchCountString(player.pitchCount)) pitch perfectly!") ; sleep(2) // Victory Royale
             player.shouldExitGameLoop = true
             return
         } else {
-            print("[\(self.pitchCounterString(player.pitchCount)) Pitch] Strikes: \(strikeCount), Balls: \(ballCount)") // Give hints
-            player.addPitchCount()
+            print("[\(self.pitchCountString(player.pitchCount)) Pitch] Strikes: \(strikeCount), Balls: \(ballCount)") // Give hints
             return
         }
     }
