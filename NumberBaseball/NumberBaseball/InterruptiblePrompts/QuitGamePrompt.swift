@@ -18,7 +18,8 @@ struct QuitPrompt: InterruptiblePrompt {
             // Prompt: Y or N
             guard let userInput = readLine()?.uppercased() else { continue }
             
-            switch userInput {
+            let userInputLetter = userInput.filter({ $0.isLetter }) // Input Sanitization
+            switch userInputLetter {
             case "Y":
                 print("\nAight, see ya next game.") ; sleep(1)
                 return true // shouldExitGameLoop = true

@@ -27,10 +27,11 @@ class NumberBaseball {
             // Prompt: Pitch
             guard let userInput = readLine() else { continue }
             
-            if userInput == "help" { // Command: Shows help message
+            let userInputLetter = userInput.filter({ $0.isLetter }) // Input Sanitization
+            if userInputLetter == "help" { // Command: Shows help message
                 _ = HelpPrompt().ask()
                 continue
-            } else if userInput == "quit" { // Command: Shows a prompt to quit current game
+            } else if userInputLetter == "quit" { // Command: Shows a prompt to quit current game
                 if QuitPrompt().ask() {
                     if player.pitchCount != 0 {
                         player.record(targetNumber)
@@ -41,7 +42,8 @@ class NumberBaseball {
                 continue
             }
             
-            guard let pitch = Int(userInput), validTargetNumbers.contains(pitch) else { // Exception: Invalid Pitch
+            let userInputNumber = userInput.filter({ $0.isNumber }) // Input Sanitization
+            guard let pitch = Int(userInputNumber), validTargetNumbers.contains(pitch) else { // Exception: Invalid Pitch
                 print("\nAw dawg, your pitch was whack! Try 'help' for help.")
                 continue
             }

@@ -20,7 +20,8 @@ struct ExitPrompt: InterruptiblePrompt {
             // Prompt: Y or N
             guard let userInput = readLine()?.uppercased() else { continue }
             
-            switch userInput {
+            let userInputLetter = userInput.filter({ $0.isLetter }) // Input Sanitization
+            switch userInputLetter {
             case "Y":
                 print("\nOkay, see ya dawg.") ; sleep(1)
                 return true // Exit the program

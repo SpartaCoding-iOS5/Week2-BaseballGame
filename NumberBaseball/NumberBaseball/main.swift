@@ -27,7 +27,8 @@ while !shouldExitMainLoop { // Main Loop
     
     guard let userInput = readLine()?.uppercased() else { continue } // Input Prompt
     
-    switch userInput {
+    let userInputNumber = userInput.filter({ $0.isNumber }) // Input Sanitization
+    switch userInputNumber {
     case "1": // 1. Start the game
         player.shouldExitGameLoop = false
         NumberBaseball().play(player)
