@@ -1,12 +1,12 @@
 import Foundation
 
 func startGame() {
-    print("레벨을 선택하세요 (1, 2, 4, 5, 6):")
+    print("레벨을 선택하세요 (1, 2, 3, 4, 5, 6):")
     
     do {
         if let input = readLine(), let level = Int(input) {
             var game: BaseballGame = BaseballGame()
-            var questioner: Player = Computer()
+            let questioner: Player = Computer()
             var answerer: Player = User()
             
             switch level {
@@ -16,6 +16,7 @@ func startGame() {
                 game = BaseballGameLevel2()
             case 3:
                 game = BaseballGameLevel3()
+                answerer = UserLevel3()
             case 4:
                 break
             case 5:
@@ -23,12 +24,12 @@ func startGame() {
             case 6:
                 break
             default:
-                print("유효하지 않은 레벨입니다. 1~6까지를 선택해주세요.")
+                throw BaseballGameError.InputError.levelError
             }
             
             try game.startGame(questioner: questioner, answerer: answerer)
         } else {
-            print("잘못된 입력입니다.")
+            throw BaseballGameError.InputError.invalidInput
         }
     } catch let error {
         print(error.localizedDescription)
