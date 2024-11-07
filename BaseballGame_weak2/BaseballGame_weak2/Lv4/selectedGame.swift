@@ -22,6 +22,7 @@ extension BaseballGameLogic  {
         while isOnGame {
             print("1. 게임 시작하기  2. 게임 기록 보기  3. 종료하기")
             
+            // 옵션 선택
             let input = readLine()
             if let input, let intInput = Int(input) {
                 switch intInput {

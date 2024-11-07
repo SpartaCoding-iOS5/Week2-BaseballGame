@@ -11,12 +11,11 @@ import Foundation
 struct PlayData {
     var playCount: Int = 0
     var tryCount: Int = 0
-    var history: String = ""
     
     /// playCount와 tryCount를 history에 저장하는 메소드
-    mutating func savedGameRecord() {
+    mutating func savedGameRecord() -> String {
         let record: String = "\(self.playCount)번째 게임: 시도횟수 - \(self.tryCount)"
         
-        self.history = record
+        return record
     }
 }

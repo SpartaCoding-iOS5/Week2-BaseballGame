@@ -20,7 +20,7 @@ extension BaseballGameLogic  {
             game.currentNumber = createRandomNumberLv3()
             game.playRecord.playCount += 1
             game.playRecord.tryCount = 0
-            
+                        
             // 정답을 맞출 때까지 반복
             while game.rightAnswer != true {
                 print("숫자를 입력하세요")
@@ -46,10 +46,10 @@ extension BaseballGameLogic  {
             }
             
             // 게임의 시도 횟수를 반환
-            game.playRecord.savedGameRecord()
+            
             game.rightAnswer = false
             
-            return game.playRecord.history
+            return game.playRecord.savedGameRecord()
         }
         return "게임을 실행할 수 없습니다."
     }

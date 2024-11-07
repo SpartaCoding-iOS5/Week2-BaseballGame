@@ -9,6 +9,8 @@ import Foundation
 
 // 게임 기록을 불러오는 메소드를 가진 프로토콜
 protocol RecordLoading {
+    var playRecord: PlayData { get set }
+    
     func loadGameRecord(_ history: [String])
 }
 
