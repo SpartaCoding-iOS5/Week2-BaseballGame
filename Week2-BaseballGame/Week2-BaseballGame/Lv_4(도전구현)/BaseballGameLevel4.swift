@@ -25,8 +25,10 @@ class BaseballGameLevel4: BaseballGameLevel3 {
                     break outerLoop
                     
                 default:
-                    break
+                    print("올바른 숫자를 입력해주세요!")
                 }
+            } else {
+                print("숫자만 입력할 수 있습니다!")
             }
         }
     }
