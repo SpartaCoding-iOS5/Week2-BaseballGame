@@ -41,13 +41,7 @@ class Player {
     
     // Take a random target number
     func takeTargetNumber() {
-        self.currentGameNumber = TargetNumberGenerator().random()
-    }
-    
-    // Record game
-    func record() {
-        self.records.append([self.currentGameNumber, self.didWinTheGame, self.pitchCount, self.currentTargetNumber])
-        showRecord(self.currentGameNumber - 1)
+        self.currentTargetNumber = TargetNumberGenerator().random()
     }
     
     // Reset pitchCount
