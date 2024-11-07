@@ -1,30 +1,24 @@
-// Lv 2 (11/06 까지)
+// Lv 3 (11/06 까지)
 
 /*
-- 정답을 맞추기 위해 3자리수를 입력하고 힌트를 받습니다
-    - 힌트는 야구용어인 **볼**과 **스트라이크**입니다.
-    - 같은 자리에 같은 숫자가 있는 경우 **스트라이크**, 다른 자리에 숫자가 있는 경우 **볼**입니다
-    - ex) 정답 : 456 인 경우
-        - 435를 입력한 경우 → 1스트라이크 1볼
-        - 357를 입력한 경우 → 1스트라이크
-        - 678를 입력한 경우 → 1볼
-        - 123를 입력한 경우 → Nothing
-    - 만약 올바르지 않은 입력값에 대해서는 오류 문구를 보여주세요
-- 3자리 숫자가 정답과 같은 경우 게임이 종료됩니다
-- 실행 예시(정답 : 456)13123213
-*/
+ - 정답이 되는 숫자를 0에서 9까지의 서로 다른 3자리의 숫자로 바꿔주세요
+     - 맨 앞자리에 0이 오는 것은 불가능합니다
+         - 092 → 불가능
+         - 870 → 가능
+         - 300 → 불가능
+ */
 
-// Command Line Tool Project file for BaseballGame Lv_2 - Classes/BaseballGame
-// 작성일: 2024.11.05 (화요일)
+// Command Line Tool Project file for BaseballGame Lv_3 - Classes/BaseballGame
+// 작성일: 2024.11.06 (수요일)
 //
 // 작성자: Jamong
-// 이 파일은 Lv_2의 BaseballGameLv2 클래스를 정의하고 BaseballGameProtocolLv2를 준수하여 야구 게임의 주요 로직을 포함한다.
+// 이 파일은 Lv_3의 BaseballGameLv3 클래스를 정의하고 BaseballGameProtocolLv3를 준수하여 야구 게임의 주요 로직을 포함한다.
 
 import Foundation
 
-/// BaseballGame 클래스는 BaseballGameProtocolLv2을 구현하여 게임의 주요 로직을 관리
+/// BaseballGame 클래스는 BaseballGameProtocolLv3을 구현하여 게임의 주요 로직을 관리
 /// 사용자 입력을 검증하고, 스트라이크와 볼 개수를 판정
-class BaseballGameLv2: BaseballGameProtocolLv2 {
+class BaseballGameLv3: BaseballGameProtocolLv3 {
     
     /// 정답 배열, 스트라이크, 볼을 저장
     var answer: [Int]
@@ -33,7 +27,7 @@ class BaseballGameLv2: BaseballGameProtocolLv2 {
     
     /// 게임 시작 시 필요한 초기값을 설정
     init() {
-        self.answer = AnswerCreatorLv2.create()     // 정답 생성 (중복되지 않는 세 자리 숫자 생성)
+        self.answer = AnswerCreatorLv3.create()     // 정답 생성 (중복되지 않는 세 자리 숫자 생성)
         self.strike = 0     // 초기 스트라이크 개수
         self.ball = 0       // 초기 볼 개수
     }
@@ -42,10 +36,9 @@ class BaseballGameLv2: BaseballGameProtocolLv2 {
     /// 사용자가 정답을 맞출 때까지 입력을 받고, 입력에 대한 결과(스트라이크, 볼)을 제공
     func startGame() {
         print("야구 게임 시작")
-        print(answer)
         
         while true {
-            print("세 자리 숫자를 입력하세요:")
+            print("세 자리 숫자를 입력하세요: ", terminator: "")
             
             // 사용자 입력 받기
             guard let userInput = readLine() else { continue }
@@ -68,12 +61,13 @@ class BaseballGameLv2: BaseballGameProtocolLv2 {
                     print("\(strike)스트라이크 \(ball)볼")
                 }
                 
-            } catch InputErrorLv2.invalidLength {
-                print("제한사항: 세 자리 숫자를 입력해주세요.")
-            } catch InputErrorLv2.notNumber {
-                print("제한사항: 아라비아 숫자만 입력해주세요.")
-            } catch InputErrorLv2.duplicateNumbers {
-                print("제한사항: 서로 다른 숫자를 입력해주세요.")
+                
+            } catch InputErrorLv3.invalidLength {
+                print(InputErrorLv3.invalidLength.errorMessage)
+            } catch InputErrorLv3.notNumber {
+                print(InputErrorLv3.notNumber.errorMessage)
+            } catch InputErrorLv3.duplicateNumbers {
+                print(InputErrorLv3.duplicateNumbers.errorMessage)
             } catch {
                 print("알 수 없는 오류가 발생했습니다.")
             }
@@ -85,21 +79,22 @@ class BaseballGameLv2: BaseballGameProtocolLv2 {
     /// - Throws: 입력 오류가 발생할 경우 InputErrorLv2를 던짐
     /// - Returns: (strike: Int, ball: Int) 형식으로 스트라이크와 볼의 개수를 반환
     func checkAnswer(userInput: String) throws -> (strike: Int, ball: Int) {
-        guard userInput.count == 3 else {
-            throw InputErrorLv2.invalidLength
+        // 0부터 9까지의 수를 받기 때문에 맨 앞에 0을 걸러줌
+        guard let userNumber = Int(userInput), (100...999).contains(userNumber) else {
+            throw InputErrorLv3.invalidLength
         }
         
         var userAnswerArray: [Int] = []
         
         for char in userInput {
             guard let userAnswerChar = Int(String(char)) else {
-                throw InputErrorLv2.notNumber
+                throw InputErrorLv3.notNumber
             }
             userAnswerArray.append(userAnswerChar)
         }
         
         guard Set(userAnswerArray).count == 3 else {
-            throw InputErrorLv2.duplicateNumbers
+            throw InputErrorLv3.duplicateNumbers
         }
         
         return evaluateBall(userAnswer: userAnswerArray, answer: answer)
@@ -111,7 +106,6 @@ class BaseballGameLv2: BaseballGameProtocolLv2 {
     ///   - answer: 정답으로 설정된 숫자 배열
     /// - Returns: (strike: Int, ball: Int) 형식으로 스트라이크와 볼의 개수를 반환
     func evaluateBall(userAnswer: [Int], answer: [Int]) -> (strike: Int, ball: Int) {
-        // 변수 초기화
         strike = 0
         ball = 0
         
