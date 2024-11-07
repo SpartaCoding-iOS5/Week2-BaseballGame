@@ -18,8 +18,8 @@ class BaseballGame: BaseballGameLogic  {
     /// - Parameters:
     ///   - currentNumber: 정답
     ///   - input: 사용자 숫자 입력
-    func compareNumber(_ currentNumber: [Int], _ input: Int)throws {
-        var number = input
+    func compareNumber(_ currentNumber: [Int], _ input: String)throws {
+        var number = Int(input) ?? 0
         var numberArray = [Int]()
         
         var strike: Int = 0
@@ -28,8 +28,14 @@ class BaseballGame: BaseballGameLogic  {
         // 시도횟수를 카운트
         self.playRecord.tryCount += 1
         
+        // 조건 1. 입력의 첫번째 값으로 0이 오면 오류
+        let checkString = input.map { String($0) }
+        guard checkString[0] != "0" else {
+            throw BaseballGameError.enterValueOfZero
+        }
+        
         while number > 0 {
-            // 조건 1. 중복값이 있을 경우 오류
+            // 조건 2. 중복값이 있을 경우 오류
             guard !numberArray.contains(number % 10) else {
                 throw BaseballGameError.duplicateValue
             }
@@ -37,15 +43,11 @@ class BaseballGame: BaseballGameLogic  {
             number /= 10
         }
         
-        // 조건 2. 정답값와 입력값의 수가 같지 않으면 오류
+        // 조건 3. 정답값와 입력값의 수가 같지 않으면 오류
         guard numberArray.count == currentNumber.count else {
             throw BaseballGameError.InputError
         }
         
-        // 조건 4. 입력의 첫번째 값으로 0이 오면 오류
-        guard numberArray.first != 0 else {
-            throw BaseballGameError.enterValueOfZero
-        }
         
         // 정답값과 입력값 비교(볼, 스트라이크 판정)
         for index in 0..<currentNumber.count {
