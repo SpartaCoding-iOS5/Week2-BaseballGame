@@ -17,9 +17,17 @@ class RecordManager {
     }
     
     func printRecords() {
-        print("< 게임 기록 보기 >")
-        for index in records.indices {
-            print("\(index + 1)번째 게임 : 시도 횟수 - \(records[index])\n")
+        if records.isEmpty {
+            print("아직 진행한 게임이 없습니다!")
+        } else {
+            print("< 게임 기록 보기 >")
+            for index in records.indices {
+                print("\(index + 1)번째 게임 : 시도 횟수 - \(records[index])\n")
+            }
         }
+    }
+    
+    func reset() {
+        records = []
     }
 }
