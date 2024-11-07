@@ -11,6 +11,7 @@ enum BaseballGameError {
     enum InputError: LocalizedError {
         case notString
         case countNotMatching
+        case duplicatedNumber
         case zeroDetected
         case notInteger
         
@@ -18,6 +19,8 @@ enum BaseballGameError {
             switch self {
             case .notString:
                 return "문자열 입력이 아닙니다."
+            case .duplicatedNumber:
+                return "중복된 숫자가 있습니다."
             case .countNotMatching:
                 return "입력 수의 갯수가 다릅니다."
             case .zeroDetected:
