@@ -5,8 +5,6 @@
 //  Created by 권승용 on 11/7/24.
 //
 
-import Foundation
-
 class BaseballGameLevel1: BaseballGame {
     override func startGame(questioner: Player, answerer: Player) throws {
         let question = try questioner.answer()

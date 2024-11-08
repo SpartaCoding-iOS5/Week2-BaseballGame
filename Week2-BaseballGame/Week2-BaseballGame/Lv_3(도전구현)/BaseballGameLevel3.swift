@@ -5,5 +5,4 @@
 //  Created by 권승용 on 11/7/24.
 //
 
-class BaseballGameLevel3: BaseballGameLevel2 {
-}
+class BaseballGameLevel3: BaseballGameLevel2 {}
