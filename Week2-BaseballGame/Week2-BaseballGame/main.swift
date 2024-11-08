@@ -24,7 +24,8 @@ func startGame() {
                 game = BaseballGameLevel5()
                 answerer = UserOverLevel3()
             case 6:
-                break
+                game = BaseballGameLevel6()
+                answerer = UserOverLevel3()
             default:
                 throw BaseballGameError.InputError.levelError
             }

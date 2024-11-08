@@ -9,24 +9,35 @@ class BaseballGameLevel4: BaseballGameLevel3 {
     override func startGame(questioner: any Player, answerer: any Player) throws {
         print("환영합니다! 원하시는 번호를 입력해주세요")
         
-        while true {
+        outerLoop: while true {
             print("1. 게임 시작하기 2. 게임 기록 보기 3. 종료하기")
             
             if let input = readLine(), let num = Int(input) {
                 switch num {
                 case 1:
-                    try super.startGame(questioner: questioner, answerer: answerer)
+                    try proceedGame(questioner: questioner, answerer: answerer)
                     
                 case 2:
-                    break
+                    showRecord()
                     
                 case 3:
-                    break
+                    endGame()
+                    break outerLoop
                     
                 default:
-                    break
+                    print("올바른 숫자를 입력해주세요!")
                 }
+            } else {
+                print("숫자만 입력할 수 있습니다!")
             }
         }
     }
+    
+    func proceedGame(questioner: Player, answerer: Player) throws {
+        try super.startGame(questioner: questioner, answerer: answerer)
+    }
+    
+    func showRecord() {}
+    
+    func endGame() {}
 }
