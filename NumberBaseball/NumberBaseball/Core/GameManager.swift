@@ -13,7 +13,7 @@ struct GameManager {
         let group = DispatchGroup() // Background thread for target number generation
         let queue = DispatchQueue.global()
         
-        group.enter() ; queue.async { player.takeTargetNumber() ; group.leave() } // Take a random target number
+        group.enter() ; queue.async { player.generateTargetNumber() ; group.leave() } // Take a random target number
         
         print("\nAyy, bet! We about to dive in: ", terminator: "")
         for i in 0...2 { print("\(3 - i)...") ; sleep(1) }
@@ -24,8 +24,8 @@ struct GameManager {
     
     func play(_ player: Player) {
         // Game intro sequence
-        player.resetDidWinTheGame() // reset to 0 (0 == false, 1 == true)
-        player.resetPitchCount() // reset pitch count to 0
+        player.didWinTheGame = false // reset to false
+        player.pitchCount = 0 // reset pitch count to 0
         generateTargetNumberWhilePrint(player) // Take a random target number while printing countdown
         
         // Game Loop
@@ -41,9 +41,9 @@ struct GameManager {
                 continue
             } else if userInputLetter == "quit" { // Command: Shows a prompt to quit current game
                 if QuitPrompt().ask(player) {
-                    if player.pitchCount != 0 {
+                    if player.pitchCount != 0 { // If player didn't throw a pitch -> no record, no adding game number
                         player.record()
-                        player.addCurrentGameNumber()
+                        player.currentGameNumber += 1
                     }
                     player.shouldExitGameLoop = true
                 }
@@ -56,7 +56,7 @@ struct GameManager {
                 continue
             }
             
-            player.addPitchCount() // Valid Pitch accepted to be sent to judge
+            player.pitchCount += 1 // Valid Pitch accepted to be sent to judge
             GameJudge().check(player, pitch) // game ends when correct, otherwise print hints and return
         }
     }

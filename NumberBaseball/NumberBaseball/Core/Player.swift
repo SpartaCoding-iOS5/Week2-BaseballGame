@@ -9,29 +9,30 @@ import Foundation
 
 // Record game records and show them when called
 class Player {
-    var records: [[Int]]
+    private var records: [[Int]] // Store Game Records
     var currentGameNumber: Int
-    var pitchCount: Int
-    var didWinTheGame: Int // 0 == false, 1 == true
-    var shouldExitGameLoop: Bool
     var currentTargetNumber: Int
-    
+    var pitchCount: Int
+    var didWinTheGame: Bool
+    var shouldExitGameLoop: Bool
+
     init(
         records: [[Int]] = [],
         currentGameNumber: Int = 1,
+        currentTargetNumber: Int = 0,
         pitchCount: Int = 0,
-        didWinTheGame: Int = 0,
-        shouldExitGameLoop: Bool = false,
-        currentTargetNumber: Int = 0
+        didWinTheGame: Bool = false,
+        shouldExitGameLoop: Bool = false
         ) {
         self.records = records
         self.currentGameNumber = currentGameNumber
+        self.currentTargetNumber = currentTargetNumber
         self.pitchCount = pitchCount
         self.didWinTheGame = didWinTheGame
         self.shouldExitGameLoop = shouldExitGameLoop
-        self.currentTargetNumber = currentTargetNumber
         }
     
+    // for future feature: Player Database
     convenience init(_ records: [[Int]], _ currentGameNumber: Int) {
         self.init(
             records: records,
@@ -39,34 +40,19 @@ class Player {
         )
     }
     
-    // Take a random target number
-    func takeTargetNumber() {
+    // Generate a random target number
+    func generateTargetNumber() {
         self.currentTargetNumber = TargetNumberGenerator().random()
     }
     
-    // Reset pitchCount
-    func resetPitchCount() {
-        self.pitchCount = 0
-    }
-    
-    // Add up pitchCount
-    func addPitchCount() {
-        self.pitchCount += 1
-    }
-    
-    // Reset didWinTheGame
-    func resetDidWinTheGame() {
-        self.didWinTheGame = 0
-    }
-    
-    // Add up CurrentGameNumber
-    func addCurrentGameNumber() {
-        self.currentGameNumber += 1
+    // Return Records count
+    func recordsCount() -> Int {
+        return self.records.count
     }
     
     // Record game
     func record() {
-        self.records.append([self.currentGameNumber, self.didWinTheGame, self.pitchCount, self.currentTargetNumber])
+        self.records.append([self.currentGameNumber, (self.didWinTheGame ? 1 : 0), self.pitchCount, self.currentTargetNumber])
         showRecord(self.currentGameNumber - 1)
     }
     

@@ -56,7 +56,7 @@ struct GameJudge {
         }
         
         if strikeCount == 3 {
-            player.didWinTheGame = 1 // 0 == false, 1 == true
+            player.didWinTheGame = true
             player.record()
             print("\nAyy, congrats! You nailed that \(self.pitchCountString(player.pitchCount)) pitch perfectly!") ; sleep(2) // Victory Royale
             player.shouldExitGameLoop = true

@@ -15,7 +15,7 @@ struct ExitPrompt: InterruptiblePrompt {
         
         // Exit Loop
         while true {
-            print("\nYou sure you wanna exit? Your records (\(player.records.count)) will be gone ( Y / N ) : ", terminator: "")
+            print("\nYou sure you wanna exit? Your records (\(player.recordsCount())) will be gone ( Y / N ) : ", terminator: "")
             
             // Prompt: Y or N
             guard let userInput = readLine()?.uppercased() else { continue }
