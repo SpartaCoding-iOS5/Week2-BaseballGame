@@ -31,7 +31,8 @@ NumberBaseball/
 ├── InterruptiblePrompts/  
 │   ├── ExitPrompt  
 │   ├── HelpPrompt  
-│   └── QuitGamePrompt  
+│   ├── QuitGamePrompt
+│   └── ShowRecordsPrompt
 ├── Protocols/  
 │   └── InterruptiblePrompt  
 └── main  
