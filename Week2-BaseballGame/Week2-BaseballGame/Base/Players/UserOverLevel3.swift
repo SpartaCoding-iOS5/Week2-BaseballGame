@@ -1,11 +1,11 @@
 //
-//  UserLevel3.swift
+//  UserOverLevel3.swift
 //  Week2-BaseballGame
 //
 //  Created by 권승용 on 11/7/24.
 //
 
-struct UserLevel3: Player {
+struct UserOverLevel3: Player {
     func answer() throws -> Int {
         guard let userInput = readLine() else {
             throw BaseballGameError.InputError.notString
