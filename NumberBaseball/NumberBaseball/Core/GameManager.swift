@@ -51,7 +51,7 @@ struct GameManager {
             }
             
             let userInputNumber = userInput.filter({ $0.isNumber }) // Input Sanitization
-            guard let pitch = Int(userInputNumber), ValidTargetNumbers().set.contains(pitch) else { // Exception: Invalid Pitch
+            guard let pitch = Int(userInputNumber), ValidTargetNumbers.set.contains(pitch) else { // Exception: Invalid Pitch
                 print("\nAw dawg, your pitch was whack! Try 'help' for help.")
                 continue
             }
