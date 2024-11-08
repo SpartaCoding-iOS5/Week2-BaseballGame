@@ -7,31 +7,37 @@
 	objects = {
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E20589132CD859F10049F4B7 /* CopyFiles */ = {
+		71C23DB72CD8B84300A5F8FF /* Copy Files (1 item) */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			dstPath = /usr/share/man/man1;
 			dstSubfolderSpec = 0;
 			files = (
 			);
+			name = "Copy Files (1 item)";
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E20589152CD859F10049F4B7 /* Week2-BaseballGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Week2-BaseballGame"; sourceTree = BUILT_PRODUCTS_DIR; };
+		71C23DB92CD8B84300A5F8FF /* NumberBaseball */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = NumberBaseball; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		E20589172CD859F10049F4B7 /* Week2-BaseballGame */ = {
+		71C23DBB2CD8B84300A5F8FF /* NumberBaseball */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Week2-BaseballGame";
+			path = NumberBaseball;
+			sourceTree = "<group>";
+		};
+		71C23DE52CD8DB9200A5F8FF /* Archive */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Archive;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E20589122CD859F10049F4B7 /* Frameworks */ = {
+		71C23DB62CD8B84300A5F8FF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,18 +47,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E205890C2CD859F10049F4B7 = {
+		71C23DB02CD8B84300A5F8FF = {
 			isa = PBXGroup;
 			children = (
-				E20589172CD859F10049F4B7 /* Week2-BaseballGame */,
-				E20589162CD859F10049F4B7 /* Products */,
+				71C23DE52CD8DB9200A5F8FF /* Archive */,
+				71C23DBB2CD8B84300A5F8FF /* NumberBaseball */,
+				71C23DBA2CD8B84300A5F8FF /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		E20589162CD859F10049F4B7 /* Products */ = {
+		71C23DBA2CD8B84300A5F8FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E20589152CD859F10049F4B7 /* Week2-BaseballGame */,
+				71C23DB92CD8B84300A5F8FF /* NumberBaseball */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,64 +67,65 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E20589142CD859F10049F4B7 /* Week2-BaseballGame */ = {
+		71C23DB82CD8B84300A5F8FF /* NumberBaseball */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E205891C2CD859F10049F4B7 /* Build configuration list for PBXNativeTarget "Week2-BaseballGame" */;
+			buildConfigurationList = 71C23DC02CD8B84300A5F8FF /* Build configuration list for PBXNativeTarget "NumberBaseball" */;
 			buildPhases = (
-				E20589112CD859F10049F4B7 /* Sources */,
-				E20589122CD859F10049F4B7 /* Frameworks */,
-				E20589132CD859F10049F4B7 /* CopyFiles */,
+				71C23DB52CD8B84300A5F8FF /* Sources */,
+				71C23DB62CD8B84300A5F8FF /* Frameworks */,
+				71C23DB72CD8B84300A5F8FF /* Copy Files (1 item) */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				E20589172CD859F10049F4B7 /* Week2-BaseballGame */,
+				71C23DBB2CD8B84300A5F8FF /* NumberBaseball */,
+				71C23DE52CD8DB9200A5F8FF /* Archive */,
 			);
-			name = "Week2-BaseballGame";
+			name = NumberBaseball;
 			packageProductDependencies = (
 			);
-			productName = "Week2-BaseballGame";
-			productReference = E20589152CD859F10049F4B7 /* Week2-BaseballGame */;
+			productName = NumberBaseball;
+			productReference = 71C23DB92CD8B84300A5F8FF /* NumberBaseball */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E205890D2CD859F10049F4B7 /* Project object */ = {
+		71C23DB12CD8B84300A5F8FF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
-				LastUpgradeCheck = 1610;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
-					E20589142CD859F10049F4B7 = {
-						CreatedOnToolsVersion = 16.1;
+					71C23DB82CD8B84300A5F8FF = {
+						CreatedOnToolsVersion = 16.0;
 					};
 				};
 			};
-			buildConfigurationList = E20589102CD859F10049F4B7 /* Build configuration list for PBXProject "Week2-BaseballGame" */;
+			buildConfigurationList = 71C23DB42CD8B84300A5F8FF /* Build configuration list for PBXProject "NumberBaseball" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = E205890C2CD859F10049F4B7;
+			mainGroup = 71C23DB02CD8B84300A5F8FF;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = E20589162CD859F10049F4B7 /* Products */;
+			productRefGroup = 71C23DBA2CD8B84300A5F8FF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E20589142CD859F10049F4B7 /* Week2-BaseballGame */,
+				71C23DB82CD8B84300A5F8FF /* NumberBaseball */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E20589112CD859F10049F4B7 /* Sources */ = {
+		71C23DB52CD8B84300A5F8FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -127,7 +135,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		E205891A2CD859F10049F4B7 /* Debug */ = {
+		71C23DBE2CD8B84300A5F8FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -180,7 +188,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -190,7 +198,7 @@
 			};
 			name = Debug;
 		};
-		E205891B2CD859F10049F4B7 /* Release */ = {
+		71C23DBF2CD8B84300A5F8FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -237,7 +245,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -245,19 +253,23 @@
 			};
 			name = Release;
 		};
-		E205891D2CD859F10049F4B7 /* Debug */ = {
+		71C23DC12CD8B84300A5F8FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QF72PLT3RA;
+				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
-		E205891E2CD859F10049F4B7 /* Release */ = {
+		71C23DC22CD8B84300A5F8FF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QF72PLT3RA;
+				ENABLE_HARDENED_RUNTIME = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -266,25 +278,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E20589102CD859F10049F4B7 /* Build configuration list for PBXProject "Week2-BaseballGame" */ = {
+		71C23DB42CD8B84300A5F8FF /* Build configuration list for PBXProject "NumberBaseball" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E205891A2CD859F10049F4B7 /* Debug */,
-				E205891B2CD859F10049F4B7 /* Release */,
+				71C23DBE2CD8B84300A5F8FF /* Debug */,
+				71C23DBF2CD8B84300A5F8FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E205891C2CD859F10049F4B7 /* Build configuration list for PBXNativeTarget "Week2-BaseballGame" */ = {
+		71C23DC02CD8B84300A5F8FF /* Build configuration list for PBXNativeTarget "NumberBaseball" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E205891D2CD859F10049F4B7 /* Debug */,
-				E205891E2CD859F10049F4B7 /* Release */,
+				71C23DC12CD8B84300A5F8FF /* Debug */,
+				71C23DC22CD8B84300A5F8FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E205890D2CD859F10049F4B7 /* Project object */;
+	rootObject = 71C23DB12CD8B84300A5F8FF /* Project object */;
 }
