@@ -17,18 +17,18 @@ import Foundation
 
 /// 랜덤한 임의의 수 3개 만들기(1 ~ 9)
 /// - Returns: 생성된 임의의 수 배열
-func createRandomNumber() -> [Int] {
-    var numberArray: [Int] = []
-    while numberArray.count < 3 {
+func createAnswer() -> [Int] {
+    var answer: [Int] = []
+    while answer.count < 3 {
         let num: Int = Int.random(in: 1...9)
-        guard !numberArray.contains(num) else {
+        guard !answer.contains(num) else {
             continue
         }
-        numberArray.append(num)
-        guard numberArray.contains(0) else {
+        answer.append(num)
+        guard answer.contains(0) else {
             continue
         }
-        numberArray.removeLast()
+        answer.removeLast()
     }
-    return numberArray
+    return answer
 }
