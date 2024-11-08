@@ -7,9 +7,12 @@
 
 import Foundation
 
-struct BaseballGameLevel1 {
-    static func startGame(questioner: Player, answerer: Player) throws {
+class BaseballGameLevel1: BaseballGame {
+    override func startGame(questioner: Player, answerer: Player) throws {
         let question = try questioner.answer()
+        
+        print("Level1 게임에 오신 것을 환영합니다.")
+        print("1에서 9까지의 서로 다른 임의의 3자리 수를 입력해 주세요.")
         while true {
             if try answerer.answer() == question {
                 print("정답입니다!")

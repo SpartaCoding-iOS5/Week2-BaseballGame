@@ -6,23 +6,24 @@
 //
 import Foundation
 
-struct BaseballGameLevel2 {
-    func startGame() throws {
-        let computerAnswer = try Computer().answer()
-        
+class BaseballGameLevel2: BaseballGameLevel1 {
+    override func startGame(questioner: any Player, answerer: any Player) throws {
+        let question = try questioner.answer()
+
+        print("<게임을 시작합니다>")
         while true {
             print("숫자를 입력하세요")
-            let userAnswer = try User().answer()
-            if userAnswer == computerAnswer {
+            let userAnswer = try answerer.answer()
+            if userAnswer == question {
                 print("정답입니다!")
                 break
             } else {
-                giveHint(computerAnswer: computerAnswer, userAnswer: userAnswer)
+                giveHint(computerAnswer: question, userAnswer: userAnswer)
             }
         }
     }
     
-    private func giveHint(computerAnswer: Int, userAnswer: Int) {
+    func giveHint(computerAnswer: Int, userAnswer: Int) {
         let userAnswerArr = Array(String(userAnswer))
         let computerAnswerArr = Array(String(computerAnswer))
         
