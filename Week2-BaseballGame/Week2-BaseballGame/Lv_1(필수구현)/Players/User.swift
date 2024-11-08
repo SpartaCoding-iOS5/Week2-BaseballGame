@@ -19,6 +19,10 @@ struct User: Player {
             throw BaseballGameError.InputError.zeroDetected
         }
         
+        guard Set(userInput).count == 3 else {
+            throw BaseballGameError.InputError.duplicatedNumber
+        }
+        
         guard let userAnswer = Int(userInput) else {
             throw BaseballGameError.InputError.notInteger
         }
