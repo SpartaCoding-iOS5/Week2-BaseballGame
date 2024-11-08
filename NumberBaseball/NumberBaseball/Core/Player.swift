@@ -1,5 +1,5 @@
 //
-//  StatManager.swift
+//  Player.swift
 //  NumberBaseball
 //
 //  Created by DoyleHWorks on 11/5/24.
