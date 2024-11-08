@@ -35,9 +35,9 @@ while !shouldExitMainLoop { // Main Loop
     case "2" : // 2. Check the game stats
         player.showRecords()
     case "3": // 3. How to play
-        _ = HelpPrompt().ask()
+        _ = HelpPrompt().ask(player)
     case "4": // 4. Exit
-        shouldExitMainLoop = ExitPrompt().ask()
+        shouldExitMainLoop = ExitPrompt().ask(player)
     default: // Exception: Invalid Input
         print("\nYou trippin? Pick a number between 1 and 4.")
         sleep(2)

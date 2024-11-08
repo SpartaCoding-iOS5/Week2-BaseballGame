@@ -37,10 +37,10 @@ struct GameManager {
             
             let userInputLetter = userInput.filter({ $0.isLetter }) // Input Sanitization
             if userInputLetter == "help" { // Command: Shows help message
-                _ = HelpPrompt().ask()
+                _ = HelpPrompt().ask(player)
                 continue
             } else if userInputLetter == "quit" { // Command: Shows a prompt to quit current game
-                if QuitPrompt().ask() {
+                if QuitPrompt().ask(player) {
                     if player.pitchCount != 0 {
                         player.record()
                         player.addCurrentGameNumber()

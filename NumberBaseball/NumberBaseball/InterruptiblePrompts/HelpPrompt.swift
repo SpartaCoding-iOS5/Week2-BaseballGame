@@ -10,7 +10,7 @@ import Foundation
 // Show help message
 struct HelpPrompt: InterruptiblePrompt {
     
-    func ask() -> Bool {
+    func ask(_ player: Player) -> Bool {
         sleep(1)
         
         // Help Loop

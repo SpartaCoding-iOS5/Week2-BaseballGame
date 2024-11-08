@@ -7,5 +7,5 @@
 
 // Protocol for prompts that interrupt core loops (Main Loop, Game Loop)
 protocol InterruptiblePrompt {
-    func ask() -> Bool
+    func ask(_ player: Player) -> Bool
 }

@@ -10,7 +10,7 @@ import Foundation
 // Ask if the user really wants to exit the program
 struct ExitPrompt: InterruptiblePrompt {
 
-    func ask() -> Bool {
+    func ask(_ player: Player) -> Bool {
         sleep(1)
         
         // Exit Loop

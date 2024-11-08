@@ -11,7 +11,7 @@ import Foundation
 struct QuitPrompt: InterruptiblePrompt {
 
     // Quit Loop
-    func ask() -> Bool {
+    func ask(_ player: Player) -> Bool {
         while true {
             print("\nYou sure you wanna quit? ( Y / N ) : ", terminator: "")
             
