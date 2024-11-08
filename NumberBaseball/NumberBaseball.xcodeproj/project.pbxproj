@@ -29,11 +29,6 @@
 			path = NumberBaseball;
 			sourceTree = "<group>";
 		};
-		71C23DE52CD8DB9200A5F8FF /* Archive */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Archive;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +45,6 @@
 		71C23DB02CD8B84300A5F8FF = {
 			isa = PBXGroup;
 			children = (
-				71C23DE52CD8DB9200A5F8FF /* Archive */,
 				71C23DBB2CD8B84300A5F8FF /* NumberBaseball */,
 				71C23DBA2CD8B84300A5F8FF /* Products */,
 			);
@@ -81,7 +75,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				71C23DBB2CD8B84300A5F8FF /* NumberBaseball */,
-				71C23DE52CD8DB9200A5F8FF /* Archive */,
 			);
 			name = NumberBaseball;
 			packageProductDependencies = (
