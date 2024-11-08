@@ -33,7 +33,7 @@ while !shouldExitMainLoop { // Main Loop
         player.shouldExitGameLoop = false
         GameManager().play(player)
     case "2" : // 2. Check the game stats
-        player.showRecords()
+        _ = ShowRecordsPrompt().ask(player)
     case "3": // 3. How to play
         _ = HelpPrompt().ask(player)
     case "4": // 4. Exit

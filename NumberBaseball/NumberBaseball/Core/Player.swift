@@ -77,20 +77,13 @@ class Player {
     func showRecords() {
         sleep(1) ; print("\n< Game Records >")
         
-        guard !records.isEmpty else { // if records is empty, print this
+        guard !self.records.isEmpty else { // if records is empty, print this
             print("There's no record, dawg!!") ; sleep(1)
             return
         }
         
         for index in records.indices {
             showRecord(index)
-        }
-
-        // Prompt: are you done seeing?
-        while true {
-            print("\nPress Enter to continue...", terminator:"")
-            guard let _ = readLine() else { continue }
-            break
         }
         
         return
