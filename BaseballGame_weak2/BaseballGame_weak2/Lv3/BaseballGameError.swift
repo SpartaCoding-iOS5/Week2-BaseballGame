@@ -8,7 +8,7 @@
 import Foundation
 
 /// 숫자 야구게임을 진행하며 발생하는 오류
-enum BaseballGameError: Error, LocalizedError {
+enum BaseballGameError: LocalizedError {
     case duplicateValue
     case InputError
     case enterValueOfZero
