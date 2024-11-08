@@ -22,6 +22,7 @@ struct GameManager {
         group.wait() // Wait for the target number to be generated
     }
     
+    // Initialize a game session
     func play(_ player: Player) {
         // Game intro sequence
         player.didWinTheGame = false // reset to false
