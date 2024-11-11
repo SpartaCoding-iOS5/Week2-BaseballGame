@@ -12,13 +12,18 @@ class BaseballGameLevel2: BaseballGameLevel1 {
 
         print("<게임을 시작합니다>")
         while true {
-            print("숫자를 입력하세요")
-            let userAnswer = try answerer.answer()
-            if userAnswer == question {
-                print("정답입니다!")
-                break
-            } else {
-                giveHint(computerAnswer: question, userAnswer: userAnswer)
+            do {
+                print("숫자를 입력하세요")
+                let userAnswer = try answerer.answer()
+                if userAnswer == question {
+                    print("정답입니다!")
+                    break
+                } else {
+                    giveHint(computerAnswer: question, userAnswer: userAnswer)
+                }
+            } catch let error {
+                print(error.localizedDescription)
+                print("다시 입력해 주세요.")
             }
         }
     }
