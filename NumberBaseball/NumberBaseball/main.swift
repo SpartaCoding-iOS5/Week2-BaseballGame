@@ -7,32 +7,41 @@
 
 import Foundation
 
-let validPitches = ValidPitches().array // Declare a valid pitches list
-let validAnswers = Set(validPitches) // Declare valid answers
+let player = Player() // Make an instance of Player
+var shouldExitMainLoop = false // Being true will exit main loop and thus program
 
-let statManager = StatManager() // Make an instance of StatManager
-
-while true {
-    print(MainMessages().welcome, terminator: "")
-    guard let userInput = readLine()?.uppercased() else { continue }
+// Provide a number-based interface
+while !shouldExitMainLoop { // Main Loop
+    print("""
     
-    switch userInput {
+    !=== Number Baseball ===!
+    
+    1. Start game
+    2. Check out stats
+    3. How to play
+    4. Exit
+    
+    Pick a num: 
+    """
+    , terminator: "")
+    
+    guard let userInput = readLine()?.uppercased() else { continue } // Input Prompt
+    
+    let userInputNumber = userInput.filter({ $0.isNumber }) // Input Sanitization
+    switch userInputNumber {
     case "1": // 1. Start the game
-        print(MainMessages().gameStarts, terminator: "")
-        for i in 0...2 { print("\(3 - i)...") ; sleep(1) }
-        print("")
-        NumberBaseball().play(statManager)
+        player.shouldExitGameLoop = false
+        GameManager().play(player)
     case "2" : // 2. Check the game stats
-        sleep(1)
-        statManager.show()
-        continue
+        _ = ShowRecordsPrompt().ask(player)
     case "3": // 3. How to play
-        HelpPrompt().showLoop()
+        _ = HelpPrompt().ask(player)
     case "4": // 4. Exit
-        ExitPrompt().askLoop(statManager.records.count)
-    default:
-        print(MainMessages().invalidInput)
+        shouldExitMainLoop = ExitPrompt().ask(player)
+    default: // Exception: Invalid Input
+        print("\nYou trippin? Pick a number between 1 and 4.")
         sleep(2)
-        continue
     }
 }
+
+exit(0) // Exit the program when Main Loop breaks
